@@ -15,6 +15,15 @@ export default function Register({ navigation }) {
 
         <Text style={tw`text-black text-sm mb-6`}>Register in to to start your session</Text>
 
+        
+        <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
+          <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />
+          <TextInput
+            placeholder="Enter Full Name"
+            style={tw`flex-1`}
+          />
+        </View>
+
         <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
           <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />
           <TextInput
@@ -34,7 +43,7 @@ export default function Register({ navigation }) {
         <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
           <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />
           <TextInput
-            placeholder="Registration Number"
+            placeholder="Enter institution"
             style={tw`flex-1`}
           />
         </View>

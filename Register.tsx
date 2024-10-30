@@ -13,7 +13,7 @@ export default function Register({ navigation }) {
 
       <View style={tw`w-4/5 max-w-sm p-6 bg-white border border-yellow-500 rounded-lg shadow-lg items-center`}>
 
-        <Text style={tw`text-black text-sm mb-6`}>Register in to to start your session</Text>
+        <Text style={tw`text-black text-sm mb-6`}>Register here in to to start your session</Text>
 
         <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
           <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />

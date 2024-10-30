@@ -41,17 +41,17 @@ export default function Register({ navigation }) {
           />
         </View>
         <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
-          <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />
+        
           <TextInput
-            placeholder="Enter institution"
+            placeholder="Select institution"
             style={tw`flex-1`}
           />
         </View>
 
         <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
-          <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />
+         
           <TextInput
-            placeholder="Registration Number"
+            placeholder="Enter school Email"
             style={tw`flex-1`}
           />
         </View>

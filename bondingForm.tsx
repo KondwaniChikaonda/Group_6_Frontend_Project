@@ -17,6 +17,8 @@ const BondingForm = () => {
     Email: '',
     BankName: '',
     Branch: '',
+    BankAccountNumber: '',
+    BankAccountName: '',
   });
 
   const steps = [
@@ -24,8 +26,9 @@ const BondingForm = () => {
       title: "Step 1: Student's Personal Details",
       content: (
         <>
+
           <TextInput
-            placeholder="First Name"
+            placeholder="Surname"
             value={formData.SurName}
             onChangeText={(text) => setFormData({ ...formData, SurName: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
@@ -36,6 +39,8 @@ const BondingForm = () => {
             onChangeText={(text) => setFormData({ ...formData, FirstName: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
+
+    
              <TextInput
             placeholder="Other Name(s)"
             value={formData.OtherName}
@@ -92,6 +97,9 @@ const BondingForm = () => {
         </>
       ),
     },
+  
+    
+    
     {
       title: "Step 2: Student's Bank Details",
       content: (
@@ -106,19 +114,83 @@ const BondingForm = () => {
             placeholder="Branch"
             value={formData.Branch}
             onChangeText={(text) => setFormData({ ...formData, Branch: text })}
-            style={tw`h-10 border border-gray-300 rounded p-2`}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+           <TextInput
+            placeholder="Bank Account Number "
+            value={formData.BankAccountNumber}
+            onChangeText={(text) => setFormData({ ...formData, BankAccountNumber: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+          <TextInput
+            placeholder="Bank Account Name "
+            value={formData.BankAccountName}
+            onChangeText={(text) => setFormData({ ...formData, BankAccountName: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
         </>
+        
+        
       ),
     },
+    
+
+  
 
 
 
-
-
-
+  
     {
-        title: "Step 2: Student's Bank Details",
+        title: "Step 3: Parents/Guardian Details",
+        content: (
+          <>
+            <TextInput
+              placeholder="Bank Name"
+              value={formData.BankName}
+              onChangeText={(text) => setFormData({ ...formData, BankName: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            />
+            <TextInput
+              placeholder="Branch"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, Branch: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2`}
+            />
+          </>
+        ),
+      },
+
+
+
+
+      {
+        title: "Step 4: Student's University/College and program of study",
+        content: (
+          <>
+            <TextInput
+              placeholder="Bank Name"
+              value={formData.BankName}
+              onChangeText={(text) => setFormData({ ...formData, BankName: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            />
+            <TextInput
+              placeholder="Branch"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, Branch: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2`}
+            />
+          </>
+        ),
+      },
+
+
+
+
+
+
+
+      {
+        title: "Step 5: Loan amount Details",
         content: (
           <>
             <TextInput
@@ -168,7 +240,7 @@ const BondingForm = () => {
           disabled={currentStep === steps.length - 1}
           style={tw`bg-yellow-600 p-3 rounded ${currentStep === steps.length - 1 ? 'opacity-50' : ''}`}
         >
-          <Text style={tw`text-center text-white`}>{currentStep === steps.length - 1 ? 'Submit' : 'Next'}</Text>
+          <Text style={tw`text-center text-white`}>{currentStep === steps.length - 1 ? 'Bond' : 'Next'}</Text>
         </TouchableOpacity>
       </View>
     </View>

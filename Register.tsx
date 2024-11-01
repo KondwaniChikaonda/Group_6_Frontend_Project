@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import tw from 'twrnc';
 
+
 export default function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
@@ -52,15 +53,6 @@ export default function Register({ navigation }) {
           />
         </View>
 
-        
-        <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
-          <FontAwesome name="user" size={20} color="gray" style={tw`mr-2`} />
-          <TextInput
-            placeholder="Enter Full Name"
-            style={tw`flex-1`}
-          />
-        </View>
-
         <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
           <FontAwesome name="id-badge" size={20} color="gray" style={tw`mr-2`} />
           <TextInput
@@ -78,11 +70,10 @@ export default function Register({ navigation }) {
             placeholder="Password"
             secureTextEntry
             style={tw`flex-1`}
-
             value={password}
             onChangeText={setPassword}
           />
-     
+        </View>
 
      
         <View style={tw`flex-row items-center w-full p-3 mb-6 border border-gray-300 rounded`}>

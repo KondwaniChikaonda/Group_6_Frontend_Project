@@ -19,6 +19,12 @@ const BondingForm = () => {
     Branch: '',
     BankAccountNumber: '',
     BankAccountName: '',
+    FullName: '',
+    postalAddress: '',
+    PhysicalAddress: '',
+    HomeVillage: '',
+    Occupation: '',
+
   });
 
   const steps = [
@@ -208,18 +214,57 @@ const BondingForm = () => {
         content: (
           <>
             <TextInput
-              placeholder="Bank Name"
+              placeholder="Fullname"
               value={formData.BankName}
-              onChangeText={(text) => setFormData({ ...formData, BankName: text })}
+              onChangeText={(text) => setFormData({ ...formData, FullName: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
             <TextInput
-              placeholder="Branch"
+              placeholder="postalAddress"
               value={formData.Branch}
-              onChangeText={(text) => setFormData({ ...formData, Branch: text })}
-              style={tw`h-10 border border-gray-300 rounded p-2`}
+              onChangeText={(text) => setFormData({ ...formData, postalAddress: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
+
+            <TextInput
+              placeholder="Physcal Address"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, PhysicalAddress: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+              <TextInput
+              placeholder="Home Village"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, HomeVillage: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+              <TextInput
+              placeholder="District"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, District: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+              <TextInput
+              placeholder="Occupation"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, Occupation: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+              <TextInput
+              placeholder="Email"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, Email: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+              <TextInput
+              placeholder="Phone Number"
+              value={formData.Branch}
+              onChangeText={(text) => setFormData({ ...formData, PhoneNumber: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
           </>
+
+          
         ),
       },
 

@@ -25,6 +25,11 @@ const BondingForm = () => {
     HomeVillage: '',
     Occupation: '',
     PhoneNumberG: '',
+    UniversityName: '',
+    ProgramOfStudy:'',
+    RegistrationNumber:'',
+    AcademicYear:'',
+    YearOfStudy:'',
     Sex: '',
     
 
@@ -40,7 +45,7 @@ const BondingForm = () => {
   <View style={tw`mr-2 w-1/2`}>
     <Text style={tw`text-sm`}>Surname</Text>
     <TextInput
-      placeholder="Surname"
+      
       value={formData.SurName}
       onChangeText={(text) => setFormData({ ...formData, SurName: text })}
       style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-1`}
@@ -50,7 +55,7 @@ const BondingForm = () => {
   <View style={tw`w-1/2`}>
     <Text style={tw`text-sm`}>First Name</Text>
     <TextInput
-      placeholder="First Name(s)"
+     
       value={formData.FirstName}
       onChangeText={(text) => setFormData({ ...formData, FirstName: text })}
       style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-1`}
@@ -64,7 +69,7 @@ const BondingForm = () => {
   <View style={tw`mr-2 w-1/2`}>
     <Text style={tw`text-sm`}>Other Name</Text>
     <TextInput
-      placeholder="Other Name(s)"
+     
       value={formData.OtherName}
       onChangeText={(text) => setFormData({ ...formData, OtherName: text })}
       style={tw`h-10 border w-full border-gray-300 rounded p-2 mb-1`}
@@ -74,7 +79,7 @@ const BondingForm = () => {
   <View style={tw`w-1/2`}>
     <Text style={tw`text-sm`}>Date of Birth</Text>
     <TextInput
-      placeholder="Date of Birth"
+      
       value={formData.dob}
       onChangeText={(text) => setFormData({ ...formData, dob: text })}
       style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-1`}
@@ -86,7 +91,7 @@ const BondingForm = () => {
 <View style={tw`w-full`}>  
             <Text style={tw`text-sm`}>Postal Address </Text>
            <TextInput
-            placeholder="Postal Address"
+            
      
             value={formData.PostalAddress}
             onChangeText={(text) => setFormData({ ...formData, PostalAddress: text })}
@@ -100,7 +105,7 @@ const BondingForm = () => {
 <View style={tw`mr-2 w-1/2`}>
         <Text style={tw`text-sm`}>Home Village</Text>
           <TextInput
-            placeholder="Home Village"
+           
             secureTextEntry
             value={formData.Village}
             onChangeText={(text) => setFormData({ ...formData, Village: text })}
@@ -111,7 +116,7 @@ const BondingForm = () => {
        <View style={tw`w-1/2`}>  
             <Text style={tw`text-sm`}>Sex </Text>
            <TextInput
-            placeholder="Sex"
+            
      
             value={formData.Sex}
             onChangeText={(text) => setFormData({ ...formData, Sex: text })}
@@ -122,9 +127,9 @@ const BondingForm = () => {
 
 <View style={tw`flex flex-row justify-between`}>
   <View style={tw`mr-2 w-1/2`}>
-  <Text style={tw`text-sm`}>T/A</Text>
+  <Text style={tw`text-sm`}>Traditional Authority</Text>
     <TextInput
-      placeholder="Traditional Authority"
+      
       value={formData.Traditional}
       onChangeText={(text) => setFormData({ ...formData, Traditional: text })}
       style={tw`h-10 border w-full border-gray-300 rounded p-2 mb-1`}
@@ -132,9 +137,9 @@ const BondingForm = () => {
   </View>
 
   <View style={tw`w-1/2`}>
-  <Text style={tw`text-sm`}>District</Text>
+  <Text style={tw`text-sm`}>Select District</Text>
     <TextInput
-      placeholder="Select District"
+      
       value={formData.District}
       onChangeText={(text) => setFormData({ ...formData, District: text })}
       style={tw`h-10 border w-full border-gray-300 rounded p-2 mb-1`}
@@ -148,7 +153,7 @@ const BondingForm = () => {
     <Text style={tw`text-sm`}>Phone Number</Text>
     
             <TextInput
-            placeholder="Phone Number"
+           
  
             value={formData.PhoneNumber}
             onChangeText={(text) => setFormData({ ...formData, PhoneNumber: text })}
@@ -159,10 +164,10 @@ const BondingForm = () => {
  <View style={tw`w-1/2`}>
        <Text style={tw`text-sm`}>Email</Text>
             <TextInput
-            placeholder="Email"
+            
             value={formData.Email}
             onChangeText={(text) => setFormData({ ...formData, Email: text })}
-            style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-2`}
+            style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-1`}
           />
         </View>  
  </View>
@@ -176,26 +181,34 @@ const BondingForm = () => {
       title: "Step 2: Student's Bank Details",
       content: (
         <>
+
+
+      <Text style={tw`text-sm`}>Bank Name</Text>
           <TextInput
-            placeholder="Bank Name"
             value={formData.BankName}
             onChangeText={(text) => setFormData({ ...formData, BankName: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
+
+
+<Text style={tw`text-sm`}>Bank Branch</Text>
           <TextInput
-            placeholder="Branch"
             value={formData.Branch}
             onChangeText={(text) => setFormData({ ...formData, Branch: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
+
+
+<Text style={tw`text-sm`}>Account Number</Text>
            <TextInput
-            placeholder="Bank Account Number "
             value={formData.BankAccountNumber}
             onChangeText={(text) => setFormData({ ...formData, BankAccountNumber: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
+
+
+<Text style={tw`text-sm`}>Bank Account Name</Text>
           <TextInput
-            placeholder="Bank Account Name "
             value={formData.BankAccountName}
             onChangeText={(text) => setFormData({ ...formData, BankAccountName: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
@@ -216,55 +229,98 @@ const BondingForm = () => {
         title: "Step 3: Parents/Guardian Details",
         content: (
           <>
+
+
+                                 
+<View style={tw`flex flex-row justify-between`}>
+
+<View style={tw`mr-2 w-1/2`}>
+     <Text style={tw`text-sm`}>Full Name</Text>           
             <TextInput
-              placeholder="Fullname"
+          
               value={formData.FullName}
               onChangeText={(text) => setFormData({ ...formData, FullName: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
-            <TextInput
-              placeholder="postalAddress"
-              value={formData.postalAddress}
-              onChangeText={(text) => setFormData({ ...formData, postalAddress: text })}
-              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-            />
+         </View>  
 
-            <TextInput
-              placeholder="Physcal Address"
-              value={formData.PhysicalAddress}
-              onChangeText={(text) => setFormData({ ...formData, PhysicalAddress: text })}
-              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-              />
+
+         
+<View style={tw`mr-2 w-1/2`}>
+     <Text style={tw`text-sm`}>Occupation</Text>  
               <TextInput
-              placeholder="Home Village"
-              value={formData.HomeVillage}
-              onChangeText={(text) => setFormData({ ...formData, HomeVillage: text })}
-              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-              />
-              <TextInput
-              placeholder="District"
-              value={formData.District}
-              onChangeText={(text) => setFormData({ ...formData, District: text })}
-              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-              />
-              <TextInput
-              placeholder="Occupation"
               value={formData.Occupation}
               onChangeText={(text) => setFormData({ ...formData, Occupation: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />
+         </View>     
+    </View>          
+       
+    <Text style={tw`text-sm`}>Postal Address</Text>  
+            <TextInput
+              value={formData.postalAddress}
+              onChangeText={(text) => setFormData({ ...formData, postalAddress: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            />
+     
+   <Text style={tw`text-sm`}>Physical Address</Text>  
+            <TextInput
+              value={formData.PhysicalAddress}
+              onChangeText={(text) => setFormData({ ...formData, PhysicalAddress: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />  
+
+                       
+<View style={tw`flex flex-row justify-between`}>
+
+<View style={tw`mr-2 w-1/2`}>
+     <Text style={tw`text-sm`}>Home Village</Text>           
               <TextInput
-              placeholder="Email"
+              value={formData.HomeVillage}
+              onChangeText={(text) => setFormData({ ...formData, HomeVillage: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+              
+           </View>  
+
+
+    <View style={tw`mr-2 w-1/2`}>
+           <Text style={tw`text-sm`}>District</Text>  
+              <TextInput
+              value={formData.District}
+              onChangeText={(text) => setFormData({ ...formData, District: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+              />
+           </View>   
+
+         </View>     
+            
+
+              
+<View style={tw`flex flex-row justify-between`}>
+
+<View style={tw`mr-2 w-1/2`}>
+     <Text style={tw`text-sm`}>Email</Text>
+  
+              <TextInput
+      
               value={formData.Email}
               onChangeText={(text) => setFormData({ ...formData, Email: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />
+           </View>
+
+  <View style={tw`mr-2 w-1/2`}>
+     <Text style={tw`text-sm`}>Phone Number</Text>       
               <TextInput
-              placeholder="Phone Number"
+
               value={formData.PhoneNumberG}
               onChangeText={(text) => setFormData({ ...formData, PhoneNumberG: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />
+
+          </View>    
+           </View>   
           </>
 
           
@@ -280,18 +336,40 @@ const BondingForm = () => {
 
         content: (
           <>
+          <Text style={tw`text-sm`}>University Name</Text>
             <TextInput
-              placeholder="Bank Name"
-              value={formData.BankName}
-              onChangeText={(text) => setFormData({ ...formData, BankName: text })}
+             
+              value={formData.UniversityName}
+              onChangeText={(text) => setFormData({ ...formData, UniversityName: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
+            <Text style={tw`text-sm`}>Program Of Study</Text>
             <TextInput
-              placeholder="Branch"
-              value={formData.Branch}
-              onChangeText={(text) => setFormData({ ...formData, Branch: text })}
+             
+              value={formData.ProgramOfStudy}
+              onChangeText={(text) => setFormData({ ...formData, ProgramOfStudy: text })}
               style={tw`h-10 border border-gray-300 rounded p-2`}
             />
+            
+            <Text style={tw`text-sm`}>Registration Number</Text>
+          <TextInput
+            value={formData.RegistrationNumber}
+            onChangeText={(text) => setFormData({ ...formData, RegistrationNumber: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+          <Text style={tw`text-sm`}>Academic Year</Text>
+          <TextInput
+            value={formData.AcademicYear}
+            onChangeText={(text) => setFormData({ ...formData, AcademicYear: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+          <Text style={tw`text-sm`}>Year Of Study</Text>
+          <TextInput
+            value={formData.YearOfStudy}
+            onChangeText={(text) => setFormData({ ...formData, YearOfStudy: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+
           </>
         ),
       },

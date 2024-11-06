@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import tw from 'twrnc';
 import { Picker } from '@react-native-picker/picker';
 
+
 const BondingForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -35,6 +36,12 @@ const BondingForm = () => {
     
 
   });
+
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
+
+
+
 
   const steps = [
     {
@@ -106,8 +113,7 @@ const BondingForm = () => {
 <View style={tw`mr-2 w-1/2`}>
         <Text style={tw`text-sm`}>Home Village</Text>
           <TextInput
-           
-            secureTextEntry
+       
             value={formData.Village}
             onChangeText={(text) => setFormData({ ...formData, Village: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-1`}
@@ -116,13 +122,19 @@ const BondingForm = () => {
 
        <View style={tw`w-1/2`}>  
             <Text style={tw`text-sm`}>Sex </Text>
-           <TextInput
+
+      
+  <Picker
+              selectedValue={formData.Sex}
+              onValueChange={(itemValue) => setFormData({ ...formData, Sex: itemValue })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            >
+              <Picker.Item label="Select Gender" value="" />
+              <Picker.Item label="Male" value="Male" />
+              <Picker.Item label="Female" value="Female" />
             
-     
-            value={formData.Sex}
-            onChangeText={(text) => setFormData({ ...formData, Sex: text })}
-            style={tw`h-10 border border-gray-300 rounded p-2 mb-1`}
-          />
+            </Picker>  
+
         </View>  
 </View>
 
@@ -138,13 +150,24 @@ const BondingForm = () => {
   </View>
 
   <View style={tw`w-1/2`}>
-  <Text style={tw`text-sm`}>Select District</Text>
-    <TextInput
-      
-      value={formData.District}
-      onChangeText={(text) => setFormData({ ...formData, District: text })}
-      style={tw`h-10 border w-full border-gray-300 rounded p-2 mb-1`}
-    />
+  <Text style={tw`text-sm`}>District</Text>
+  <Picker
+              selectedValue={formData.District}
+              onValueChange={(itemValue) => setFormData({ ...formData, District: itemValue })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            >
+              <Picker.Item label="Select District" value="" />
+              <Picker.Item label="Blantyre" value="Blantyre" />
+              <Picker.Item label="Thyolo" value="Thyolo" />
+              <Picker.Item label="Mzimba" value="Mzimba" />
+              <Picker.Item label="Lilongwe" value="Lilongwe" />
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+            </Picker>  
   </View>
 </View>
        
@@ -232,10 +255,11 @@ const BondingForm = () => {
           <>
 
 
-                                 
-<View style={tw`flex flex-row justify-between`}>
 
-<View style={tw`mr-2 w-1/2`}>
+       <View style={tw`flex flex-row justify-between`}>
+
+      <View style={tw`mr-2 w-1/2`}>
+
      <Text style={tw`text-sm`}>Full Name</Text>           
             <TextInput
           
@@ -245,9 +269,11 @@ const BondingForm = () => {
             />
          </View>  
 
+    
 
          
-<View style={tw`mr-2 w-1/2`}>
+    <View style={tw`mr-2 w-1/2`}>
+
      <Text style={tw`text-sm`}>Occupation</Text>  
               <TextInput
               value={formData.Occupation}
@@ -286,13 +312,25 @@ const BondingForm = () => {
 
 
     <View style={tw`mr-2 w-1/2`}>
-           <Text style={tw`text-sm`}>District</Text>  
-              <TextInput
-              value={formData.District}
-              onChangeText={(text) => setFormData({ ...formData, District: text })}
+
+    <Text style={tw`text-sm`}>District</Text> 
+              <Picker
+              selectedValue={formData.District}
+              onValueChange={(itemValue) => setFormData({ ...formData, District: itemValue })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-              />
-           </View>   
+            >
+              <Picker.Item label="Select District" value="" />
+              <Picker.Item label="Blantyre" value="Blantyre" />
+              <Picker.Item label="Thyolo" value="Thyolo" />
+              <Picker.Item label="Mzimba" value="Mzimba" />
+              <Picker.Item label="Lilongwe" value="Lilongwe" />
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+            </Picker>  
 
          </View>     
             
@@ -321,10 +359,9 @@ const BondingForm = () => {
               />
 
           </View>    
-           </View>   
-          </>
-
-          
+           </View>
+       </View>       
+          </>      
         ),
       },
 

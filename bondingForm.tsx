@@ -166,7 +166,7 @@ const BondingForm = () => {
             
             value={formData.Email}
             onChangeText={(text) => setFormData({ ...formData, Email: text })}
-            style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-1`}
+            style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-2`}
           />
         </View>  
  </View>

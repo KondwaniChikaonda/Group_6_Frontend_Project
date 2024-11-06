@@ -25,6 +25,11 @@ const BondingForm = () => {
     HomeVillage: '',
     Occupation: '',
     PhoneNumberG: '',
+    UniversityName: '',
+    ProgramOfStudy:'',
+    RegistrationNumber:'',
+    AcademicYear:'',
+    YearOfStudy:'',
     
 
   });
@@ -287,18 +292,40 @@ const BondingForm = () => {
 
         content: (
           <>
+          <Text style={tw`text-sm`}>University Name</Text>
             <TextInput
-              placeholder="Bank Name"
-              value={formData.BankName}
-              onChangeText={(text) => setFormData({ ...formData, BankName: text })}
+             
+              value={formData.UniversityName}
+              onChangeText={(text) => setFormData({ ...formData, UniversityName: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
+            <Text style={tw`text-sm`}>Program Of Study</Text>
             <TextInput
-              placeholder="Branch"
-              value={formData.Branch}
-              onChangeText={(text) => setFormData({ ...formData, Branch: text })}
+             
+              value={formData.ProgramOfStudy}
+              onChangeText={(text) => setFormData({ ...formData, ProgramOfStudy: text })}
               style={tw`h-10 border border-gray-300 rounded p-2`}
             />
+            
+            <Text style={tw`text-sm`}>Registration Number</Text>
+          <TextInput
+            value={formData.RegistrationNumber}
+            onChangeText={(text) => setFormData({ ...formData, RegistrationNumber: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+          <Text style={tw`text-sm`}>Academic Year</Text>
+          <TextInput
+            value={formData.AcademicYear}
+            onChangeText={(text) => setFormData({ ...formData, AcademicYear: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+          <Text style={tw`text-sm`}>Year Of Study</Text>
+          <TextInput
+            value={formData.YearOfStudy}
+            onChangeText={(text) => setFormData({ ...formData, YearOfStudy: text })}
+            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+          />
+
           </>
         ),
       },

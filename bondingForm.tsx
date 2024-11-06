@@ -107,7 +107,6 @@ const BondingForm = () => {
         <Text style={tw`text-sm`}>Home Village</Text>
           <TextInput
            
-            secureTextEntry
             value={formData.Village}
             onChangeText={(text) => setFormData({ ...formData, Village: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-1`}
@@ -116,13 +115,17 @@ const BondingForm = () => {
 
        <View style={tw`w-1/2`}>  
             <Text style={tw`text-sm`}>Sex </Text>
-           <TextInput
+      
+  <Picker
+              selectedValue={formData.Sex}
+              onValueChange={(itemValue) => setFormData({ ...formData, Sex: itemValue })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            >
+              <Picker.Item label="Select Gender" value="" />
+              <Picker.Item label="Male" value="Male" />
+              <Picker.Item label="Female" value="Female" />
             
-     
-            value={formData.Sex}
-            onChangeText={(text) => setFormData({ ...formData, Sex: text })}
-            style={tw`h-10 border border-gray-300 rounded p-2 mb-1`}
-          />
+            </Picker>  
         </View>  
 </View>
 

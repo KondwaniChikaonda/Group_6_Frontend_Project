@@ -138,13 +138,24 @@ const BondingForm = () => {
   </View>
 
   <View style={tw`w-1/2`}>
-  <Text style={tw`text-sm`}>Select District</Text>
-    <TextInput
-      
-      value={formData.District}
-      onChangeText={(text) => setFormData({ ...formData, District: text })}
-      style={tw`h-10 border w-full border-gray-300 rounded p-2 mb-1`}
-    />
+  <Text style={tw`text-sm`}>District</Text>
+  <Picker
+              selectedValue={formData.District}
+              onValueChange={(itemValue) => setFormData({ ...formData, District: itemValue })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            >
+              <Picker.Item label="Select District" value="" />
+              <Picker.Item label="Blantyre" value="Blantyre" />
+              <Picker.Item label="Thyolo" value="Thyolo" />
+              <Picker.Item label="Mzimba" value="Mzimba" />
+              <Picker.Item label="Lilongwe" value="Lilongwe" />
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+            </Picker>  
   </View>
 </View>
        
@@ -233,9 +244,9 @@ const BondingForm = () => {
 
 
                                  
-<View style={tw`flex flex-row justify-between`}>
+       <View style={tw`flex flex-row justify-between`}>
 
-<View style={tw`mr-2 w-1/2`}>
+      <View style={tw`mr-2 w-1/2`}>
      <Text style={tw`text-sm`}>Full Name</Text>           
             <TextInput
           
@@ -244,10 +255,10 @@ const BondingForm = () => {
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
          </View>  
-
+    
 
          
-<View style={tw`mr-2 w-1/2`}>
+    <View style={tw`mr-2 w-1/2`}>
      <Text style={tw`text-sm`}>Occupation</Text>  
               <TextInput
               value={formData.Occupation}
@@ -300,6 +311,9 @@ const BondingForm = () => {
               <Picker.Item label="Zomba" value="Zomba"/>
               <Picker.Item label="Ntcheu" value="Ntcheu" />
               <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
             </Picker>  
 
          </View>     
@@ -329,10 +343,9 @@ const BondingForm = () => {
               />
 
           </View>    
-           </View>   
-          </>
-
-          
+           </View>
+       </View>       
+          </>      
         ),
       },
 

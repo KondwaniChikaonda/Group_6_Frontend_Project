@@ -261,7 +261,7 @@ const BondingForm = () => {
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
             <TextInput
-              placeholder="Branch"
+              placeholder="Bank Branch"
               value={formData.Branch}
               onChangeText={(text) => setFormData({ ...formData, Branch: text })}
               style={tw`h-10 border border-gray-300 rounded p-2`}

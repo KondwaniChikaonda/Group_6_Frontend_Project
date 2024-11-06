@@ -16,6 +16,7 @@ export default function App() {
       <Stack.Screen name="/" component={Login} />
       <Stack.Screen name="Reset" component={Reset} />
       <Stack.Screen name="bonding" component={BondingForm} />
+      <Stack.Screen name="Register" component={Register} />
       </Stack.Navigator>
     </NavigationContainer>
   );

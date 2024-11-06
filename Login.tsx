@@ -94,7 +94,7 @@ export default function Login({ navigation }) {
 
         {/* Forgot Password and Register Links */}
         <Text style={tw`mt-3 text-center`}>
-          Forgot password? <Text onPress={() => navigation.navigate('bonding')} style={tw`text-yellow-500`}>Reset</Text>
+          Forgot password? <Text onPress={() => navigation.navigate('Reset')} style={tw`text-yellow-500`}>Reset</Text>
         </Text>
         <Text style={tw`mt-2 text-center font-semibold`}>OR</Text>
         <Text style={tw`mt-3 text-center`}>

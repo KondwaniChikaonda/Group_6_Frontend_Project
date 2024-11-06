@@ -286,13 +286,21 @@ const BondingForm = () => {
 
 
     <View style={tw`mr-2 w-1/2`}>
-           <Text style={tw`text-sm`}>District</Text>  
-              <TextInput
-              value={formData.District}
-              onChangeText={(text) => setFormData({ ...formData, District: text })}
+    <Text style={tw`text-sm`}>District</Text> 
+              <Picker
+              selectedValue={formData.District}
+              onValueChange={(itemValue) => setFormData({ ...formData, District: itemValue })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-              />
-           </View>   
+            >
+              <Picker.Item label="Select District" value="" />
+              <Picker.Item label="Blantyre" value="Blantyre" />
+              <Picker.Item label="Thyolo" value="Thyolo" />
+              <Picker.Item label="Mzimba" value="Mzimba" />
+              <Picker.Item label="Lilongwe" value="Lilongwe" />
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+            </Picker>  
 
          </View>     
             

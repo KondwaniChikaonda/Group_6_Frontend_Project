@@ -176,29 +176,30 @@ const BondingForm = () => {
       content: (
         <>
 
+
       <Text style={tw`text-sm`}>Bank Name</Text>
           <TextInput
-       
             value={formData.BankName}
             onChangeText={(text) => setFormData({ ...formData, BankName: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
 
+
 <Text style={tw`text-sm`}>Bank Branch</Text>
           <TextInput
-        
             value={formData.Branch}
             onChangeText={(text) => setFormData({ ...formData, Branch: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
 
+
 <Text style={tw`text-sm`}>Account Number</Text>
            <TextInput
-        
             value={formData.BankAccountNumber}
             onChangeText={(text) => setFormData({ ...formData, BankAccountNumber: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
           />
+
 
 <Text style={tw`text-sm`}>Bank Account Name</Text>
           <TextInput

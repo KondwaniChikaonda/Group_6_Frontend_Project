@@ -25,6 +25,7 @@ const BondingForm = () => {
     HomeVillage: '',
     Occupation: '',
     PhoneNumberG: '',
+    Sex: '',
     
 
   });

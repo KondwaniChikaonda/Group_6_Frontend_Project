@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import tw from 'twrnc';
+import { Picker } from '@react-native-picker/picker';
 
 const BondingForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -30,6 +31,7 @@ const BondingForm = () => {
     RegistrationNumber:'',
     AcademicYear:'',
     YearOfStudy:'',
+    Sex: '',
     
 
   });
@@ -166,7 +168,7 @@ const BondingForm = () => {
             
             value={formData.Email}
             onChangeText={(text) => setFormData({ ...formData, Email: text })}
-            style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-2`}
+            style={tw`h-10 w-full border border-gray-300 rounded p-2 mb-1`}
           />
         </View>  
  </View>
@@ -332,46 +334,63 @@ const BondingForm = () => {
       {
 
         title: "Step 4: Student's University and program of study",
-
         content: (
           <>
-          <Text style={tw`text-sm`}>University Name</Text>
-            <TextInput
-             
-              value={formData.UniversityName}
-              onChangeText={(text) => setFormData({ ...formData, UniversityName: text })}
+            <Text style={tw`text-sm`}>University Name</Text>
+            <Picker
+              selectedValue={formData.UniversityName}
+              onValueChange={(itemValue) => setFormData({ ...formData, UniversityName: itemValue })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-            />
+            >
+             
+
+              <Picker.Item label="Select University" value="" />
+              <Picker.Item label="University Of Malawi" value="University Of Malawi" />
+              <Picker.Item label="Malawi University Of Business and Applied Science" value="Malawi University Of Business and Applied Science" />
+              <Picker.Item label="Malawi University Of Science and Technology" value="Malawi University Of Science and Technology" />
+              <Picker.Item label="Mzuzu University" value="Mzuzu University" />
+              <Picker.Item label="Catholic University " value ="Catholic University"/>
+            </Picker>
+        
             <Text style={tw`text-sm`}>Program Of Study</Text>
             <TextInput
-             
               value={formData.ProgramOfStudy}
               onChangeText={(text) => setFormData({ ...formData, ProgramOfStudy: text })}
               style={tw`h-10 border border-gray-300 rounded p-2`}
             />
-            
+        
             <Text style={tw`text-sm`}>Registration Number</Text>
-          <TextInput
-            value={formData.RegistrationNumber}
-            onChangeText={(text) => setFormData({ ...formData, RegistrationNumber: text })}
-            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-          />
-          <Text style={tw`text-sm`}>Academic Year</Text>
-          <TextInput
-            value={formData.AcademicYear}
-            onChangeText={(text) => setFormData({ ...formData, AcademicYear: text })}
-            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-          />
-          <Text style={tw`text-sm`}>Year Of Study</Text>
-          <TextInput
-            value={formData.YearOfStudy}
-            onChangeText={(text) => setFormData({ ...formData, YearOfStudy: text })}
-            style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
-          />
-
+            <TextInput
+              value={formData.RegistrationNumber}
+              onChangeText={(text) => setFormData({ ...formData, RegistrationNumber: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            />
+        
+            <Text style={tw`text-sm`}>Academic Year</Text>
+            <TextInput
+              value={formData.AcademicYear}
+              onChangeText={(text) => setFormData({ ...formData, AcademicYear: text })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            />
+        
+            <Text style={tw`text-sm`}>Year Of Study</Text>
+            <Picker
+              selectedValue={formData.YearOfStudy}
+              onValueChange={(itemValue) => setFormData({ ...formData, YearOfStudy: itemValue })}
+              style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
+            >
+              <Picker.Item label="Select Year" value="" />
+              <Picker.Item label="1" value="1" />
+              <Picker.Item label="2" value="2" />
+              <Picker.Item label="3" value="3" />
+              <Picker.Item label="4" value="4" />
+              <Picker.Item label="5" value="5"/>
+              <Picker.Item label="6" value="6" />
+              <Picker.Item label="7" value="7"/>
+            </Picker>
           </>
         ),
-      },
+        },
 
 
 

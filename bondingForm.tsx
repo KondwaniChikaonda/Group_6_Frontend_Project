@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import tw from 'twrnc';
 import { Picker } from '@react-native-picker/picker';
+import DatePicker from 'react-native-date-picker';
 
 const BondingForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -35,6 +36,12 @@ const BondingForm = () => {
     
 
   });
+
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
+
+
+
 
   const steps = [
     {

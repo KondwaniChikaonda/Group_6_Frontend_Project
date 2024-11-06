@@ -8,6 +8,7 @@ import { useState } from 'react';
 import React from 'react';
 import axios from 'axios';
 import tw from 'twrnc';
+import Home from './Home';
 
 export default function Login({ navigation }) {
   const [username, setUsername] = useState('');

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import tw from 'twrnc';
 import { Picker } from '@react-native-picker/picker';
-import DatePicker from 'react-native-date-picker';
+
 
 const BondingForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -119,7 +119,7 @@ const BondingForm = () => {
 <View style={tw`mr-2 w-1/2`}>
         <Text style={tw`text-sm`}>Home Village</Text>
           <TextInput
-           
+       
             value={formData.Village}
             onChangeText={(text) => setFormData({ ...formData, Village: text })}
             style={tw`h-10 border border-gray-300 rounded p-2 mb-1`}
@@ -128,6 +128,7 @@ const BondingForm = () => {
 
        <View style={tw`w-1/2`}>  
             <Text style={tw`text-sm`}>Sex </Text>
+
       
   <Picker
               selectedValue={formData.Sex}
@@ -139,6 +140,7 @@ const BondingForm = () => {
               <Picker.Item label="Female" value="Female" />
             
             </Picker>  
+
         </View>  
 </View>
 
@@ -259,10 +261,11 @@ const BondingForm = () => {
           <>
 
 
-                                 
+
        <View style={tw`flex flex-row justify-between`}>
 
       <View style={tw`mr-2 w-1/2`}>
+
      <Text style={tw`text-sm`}>Full Name</Text>           
             <TextInput
           
@@ -271,10 +274,12 @@ const BondingForm = () => {
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
          </View>  
+
     
 
          
     <View style={tw`mr-2 w-1/2`}>
+
      <Text style={tw`text-sm`}>Occupation</Text>  
               <TextInput
               value={formData.Occupation}
@@ -313,6 +318,7 @@ const BondingForm = () => {
 
 
     <View style={tw`mr-2 w-1/2`}>
+
     <Text style={tw`text-sm`}>District</Text> 
               <Picker
               selectedValue={formData.DistrictParents}

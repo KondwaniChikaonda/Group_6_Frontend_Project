@@ -26,13 +26,19 @@ const BondingForm = () => {
     PhysicalAddress: '',
     HomeVillage: '',
     Occupation: '',
-    PhoneNumberG: '',
+    PhoneNumberParents: '',
     UniversityName: '',
     ProgramOfStudy:'',
     RegistrationNumber:'',
     AcademicYear:'',
     YearOfStudy:'',
     Sex: '',
+    PostalAddressParents: '',
+    PhysicalAddressParents: '',
+    HomeVillageParents: '',
+    DistrictParents: '',
+    EmailParents: '',
+
     
 
   });
@@ -280,15 +286,15 @@ const BondingForm = () => {
        
     <Text style={tw`text-sm`}>Postal Address</Text>  
             <TextInput
-              value={formData.postalAddress}
-              onChangeText={(text) => setFormData({ ...formData, postalAddress: text })}
+              value={formData.PostalAddressParents}
+              onChangeText={(text) => setFormData({ ...formData, PostalAddressParents: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
      
    <Text style={tw`text-sm`}>Physical Address</Text>  
             <TextInput
-              value={formData.PhysicalAddress}
-              onChangeText={(text) => setFormData({ ...formData, PhysicalAddress: text })}
+              value={formData.PhysicalAddressParents}
+              onChangeText={(text) => setFormData({ ...formData, PhysicalAddressParents: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />  
 
@@ -298,8 +304,8 @@ const BondingForm = () => {
 <View style={tw`mr-2 w-1/2`}>
      <Text style={tw`text-sm`}>Home Village</Text>           
               <TextInput
-              value={formData.HomeVillage}
-              onChangeText={(text) => setFormData({ ...formData, HomeVillage: text })}
+              value={formData.HomeVillageParents}
+              onChangeText={(text) => setFormData({ ...formData, HomeVillageParents: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />
               
@@ -309,8 +315,8 @@ const BondingForm = () => {
     <View style={tw`mr-2 w-1/2`}>
     <Text style={tw`text-sm`}>District</Text> 
               <Picker
-              selectedValue={formData.District}
-              onValueChange={(itemValue) => setFormData({ ...formData, District: itemValue })}
+              selectedValue={formData.DistrictParents}
+              onValueChange={(itemValue) => setFormData({ ...formData, DistrictParents: itemValue })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             >
               <Picker.Item label="Select District" value="" />
@@ -337,8 +343,8 @@ const BondingForm = () => {
   
               <TextInput
       
-              value={formData.Email}
-              onChangeText={(text) => setFormData({ ...formData, Email: text })}
+              value={formData.EmailParents}
+              onChangeText={(text) => setFormData({ ...formData, EmailParents: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />
            </View>
@@ -347,8 +353,8 @@ const BondingForm = () => {
      <Text style={tw`text-sm`}>Phone Number</Text>       
               <TextInput
 
-              value={formData.PhoneNumberG}
-              onChangeText={(text) => setFormData({ ...formData, PhoneNumberG: text })}
+              value={formData.PhoneNumberParents}
+              onChangeText={(text) => setFormData({ ...formData, PhoneNumberParents: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               />
 

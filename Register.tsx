@@ -23,7 +23,7 @@ export default function Register({ navigation }) {
       console.log(selectedInstitution);
 
     try {
-      const response = await axios.post('http://localhost:3000/send-otp', {
+      const response = await axios.post('https://groub-6-backend.onrender.com/send-otp', {
         email,
         registrationNumber,
         password,
@@ -41,7 +41,7 @@ export default function Register({ navigation }) {
 
   const handleVerifyOtp = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/verify-otp', {
+      const response = await axios.post('https://groub-6-backend.onrender.com/verify-otp', {
         email,
         otp,
         password,

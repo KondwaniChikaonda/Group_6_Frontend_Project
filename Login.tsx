@@ -3,6 +3,7 @@ import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import "./global.css";
 import { useState } from 'react';
 import React from 'react';
@@ -34,15 +35,21 @@ export default function Login({ navigation }) {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('https://groub-6-backend.onrender.com/login', {
+      const response = await axios.post('http://localhost:3000/login', {
         username,
         password,
       });
 
       if (response.status === 200) {
-        localStorage.setItem('token', response.data.token);
+        const { token, userId, registrationNumber, userName } = response.data;
+        
         setLoggedIn(true);
         navigation.navigate('Home'); // Navigate to Home page after successful login
+        
+        // Store token and user details in AsyncStorage
+        await AsyncStorage.setItem('token', token);
+        await AsyncStorage.setItem('userId', userId.toString());
+        await AsyncStorage.setItem('registrationNumber', registrationNumber);
       } else {
         showNotice('Login failed. You entered wrong credentials.');
       }

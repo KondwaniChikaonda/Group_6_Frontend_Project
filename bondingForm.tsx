@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import tw from 'twrnc';
 import { Picker } from '@react-native-picker/picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 const BondingForm = () => {
@@ -42,6 +43,42 @@ const BondingForm = () => {
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+
+
+
+
+  const [userId, setUserId] = useState(null);
+  const [registrationNumber, setRegistrationNumber] = useState(null);
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const id = await AsyncStorage.getItem('userId');
+      const registrationNumber = await AsyncStorage.getItem('registrationNumber');
+      setUserId(id);
+      setRegistrationNumber(registrationNumber);
+    };
+
+    getUserInfo();
+  }, []);
+
+
+   if(userId){
+    console.log(userId);
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const steps = [
     {
@@ -405,18 +442,29 @@ const BondingForm = () => {
   ];
 
   const submitForm = async () => {
-    // Log the form data for debugging
-    console.log('Form Data:', formData);
-    console.log('Email:', formData.Email); // Log the Email specifically
-
-    try {
-      const response = await axios.post('http://localhost:3000/submit-form', formData);
-      alert(response.data.message); // Show the success message
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting the form');
+    if (userId) {
+      console.log('User ID:', userId);
+      
+      // Include userId in formData
+      const formDataWithUserId = {
+        ...formData,
+        userId: userId,
+      };
+  
+      // Log the form data for debugging
+      console.log('Form Data:', formDataWithUserId);
+      console.log('Email:', formDataWithUserId.Email); // Log the Email specifically
+  
+      try {
+        const response = await axios.post('http://localhost:3000/submit-form', formDataWithUserId);
+        alert(response.data.message); // Show the success message
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('There was an error submitting the form');
+      }
     }
   };
+  
 
   const nextStep = () => {
     if (currentStep < steps.length - 1) {

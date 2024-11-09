@@ -100,18 +100,20 @@ export default function Register({ navigation }) {
             </View>
 
             <View style={tw`flex-row items-center w-full p-3 mb-6 border border-gray-300 rounded`}>
-              <FontAwesome name="university" size={20} color="gray" style={tw`mr-2`} />
-              <Picker
-                selectedValue={selectedInstitution}
-                style={tw`flex-1`}
-                onValueChange={(itemValue) => setSelectedInstitution(itemValue)}
-              >
-                <Picker.Item label="Select Institution" value="" />
-                <Picker.Item label="University of Malawi" value="institutionA" />
-                <Picker.Item label="Malawi University of Business and Applied Science" value="institutionB" />
-                <Picker.Item label="Malawi University of Science and Technology" value="institutionC" />
-              </Picker>
-            </View>
+  <FontAwesome name="university" size={20} color="gray" style={tw`mr-2`} />
+  
+  {/* Make sure the Picker takes the remaining space in the flex container */}
+  <Picker
+    selectedValue={selectedInstitution}
+    style={tw`w-full h-5`}  // Set width to 100% and a fixed height
+    onValueChange={(itemValue) => setSelectedInstitution(itemValue)}
+  >
+    <Picker.Item label="Select Institution" value="" />
+    <Picker.Item label="University of Malawi" value="institutionA" />
+    <Picker.Item label="Malawi University of Business and Applied Science" value="institutionB" />
+    <Picker.Item label="Malawi University of Science and Technology" value="institutionC" />
+  </Picker>
+</View>
 
             <TouchableOpacity onPress={handleRegister} style={tw`w-full bg-yellow-600 p-3 rounded`}>
               <Text style={tw`text-white text-center`}>Register</Text>

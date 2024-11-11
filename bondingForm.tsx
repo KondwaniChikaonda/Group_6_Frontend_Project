@@ -33,8 +33,8 @@ const BondingForm = () => {
     AcademicYear:'',
     YearOfStudy:'',
     Sex: '',
-    
-
+    Tuition:'',
+    Upkeep:'',
   });
 
   const [date, setDate] = useState(new Date());
@@ -439,16 +439,18 @@ const BondingForm = () => {
         title: "Step 5: Loan amount Details",
         content: (
           <>
-            <TextInput
-              placeholder="Bank Name"
-              value={formData.BankName}
-              onChangeText={(text) => setFormData({ ...formData, BankName: text })}
+          
+<Text style={tw`text-sm`}>Tuition</Text>
+          <TextInput
+
+              value={formData.Tuition}
+              onChangeText={(text) => setFormData({ ...formData, Tuition: text })}
               style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
             />
+<Text style={tw`text-sm`}>Upkeep</Text>
             <TextInput
-              placeholder="Branch"
-              value={formData.Branch}
-              onChangeText={(text) => setFormData({ ...formData, Branch: text })}
+              value={formData.Upkeep}
+              onChangeText={(text) => setFormData({ ...formData, Upkeep: text })}
               style={tw`h-10 border border-gray-300 rounded p-2`}
             />
           </>

@@ -13,9 +13,11 @@ export default function Register({ navigation }) {
   const [selectedInstitution, setSelectedInstitution] = useState('');
   const [otp, setOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleRegister = async () => {
-
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
       console.log(email);
       console.log(registrationNumber);
@@ -23,7 +25,7 @@ export default function Register({ navigation }) {
       console.log(selectedInstitution);
 
     try {
-      const response = await axios.post('https://groub-6-backend.onrender.com/send-otp', {
+      const response = await axios.post('http://localhost:3000/send-otp', {
         email,
         registrationNumber,
         password,
@@ -37,11 +39,14 @@ export default function Register({ navigation }) {
       Alert.alert("Registration Failed", "Please check your details and try again.");
       console.error("Registration error:", error);
     }
+    finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleVerifyOtp = async () => {
     try {
-      const response = await axios.post('https://groub-6-backend.onrender.com/verify-otp', {
+      const response = await axios.post('http://localhost:3000/verify-otp', {
         email,
         otp,
         password,
@@ -50,7 +55,7 @@ export default function Register({ navigation }) {
 
       if (response.status === 200) {
         Alert.alert("Verification Successful", "Your account has been verified!");
-        navigation.navigate('Home');
+        navigation.navigate('Login');
       } else {
         Alert.alert("Verification Failed", "Invalid OTP. Please try again.");
       }
@@ -115,8 +120,8 @@ export default function Register({ navigation }) {
   </Picker>
 </View>
 
-            <TouchableOpacity onPress={handleRegister} style={tw`w-full bg-yellow-600 p-3 rounded`}>
-              <Text style={tw`text-white text-center`}>Register</Text>
+            <TouchableOpacity  onPress={handleRegister} disabled={isSubmitting} style={tw`w-full bg-yellow-600 p-3 rounded`}>
+            <Text   style={tw`text-white text-center`}>{isSubmitting ? 'Processing...' : 'Register'}</Text>
             </TouchableOpacity>
           </>
         )}
@@ -136,7 +141,7 @@ export default function Register({ navigation }) {
               />
             </View>
 
-            <TouchableOpacity onPress={handleVerifyOtp} style={tw`w-full bg-yellow-600 p-3 rounded`}>
+            <TouchableOpacity  onPress={handleVerifyOtp} style={tw`w-full bg-yellow-600 p-3 rounded`}>
               <Text style={tw`text-white text-center`}>Verify OTP</Text>
             </TouchableOpacity>
           </>

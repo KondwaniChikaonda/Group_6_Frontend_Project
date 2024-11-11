@@ -39,6 +39,8 @@ const BondingForm = () => {
     HomeVillageParents: '',
     DistrictParents: '',
     EmailParents: '',
+    Tuition: '',
+    Upkeek: '',
   });
 
   const [date, setDate] = useState(new Date());

@@ -50,7 +50,7 @@ export default function Register({ navigation }) {
 
       if (response.status === 200) {
         Alert.alert("Verification Successful", "Your account has been verified!");
-        navigation.navigate('Home');
+        navigation.navigate('Login');
       } else {
         Alert.alert("Verification Failed", "Invalid OTP. Please try again.");
       }

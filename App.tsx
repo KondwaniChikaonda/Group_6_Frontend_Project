@@ -9,6 +9,7 @@ import Reset from './Reset';
 import Register from './Register';
 import BondingForm from './bondingForm';
 import Home from './Home';
+import ResetPassword from './ResetPassword';
 
 
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ export default function App() {
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="bond" component={BondingForm} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />      
       </Stack.Navigator>
     </NavigationContainer>
   );

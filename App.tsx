@@ -19,9 +19,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="/" component={Login} />
-      <Stack.Screen name="Reset" component={BondingForm} />
+      <Stack.Screen name="Reset" component={Reset} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="bonding" component={BondingForm} />
+      <Stack.Screen name="bond" component={BondingForm} />
       <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>

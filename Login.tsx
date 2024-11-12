@@ -111,7 +111,7 @@ export default function Login({ navigation }) {
 
         {/* Notice Message */}
         {message ? <Text style={tw`text-red-500 mt-4`}>{message}</Text> : null}
-      </View>z
+      </View>
 
       <StatusBar style="auto" />
     </View>

@@ -39,6 +39,8 @@ const BondingForm = () => {
     HomeVillageParents: '',
     DistrictParents: '',
     EmailParents: '',
+    Tuition: '',
+    Upkeek: '',
   });
 
   const [date, setDate] = useState(new Date());
@@ -456,7 +458,7 @@ const BondingForm = () => {
       console.log('Email:', formDataWithUserId.Email); // Log the Email specifically
   
       try {
-        const response = await axios.post('http://localhost:3000/submit-form', formDataWithUserId);
+        const response = await axios.post('https://groub-6-backend.onrender.com/submit-form', formDataWithUserId);
         alert(response.data.message); // Show the success message
       } catch (error) {
         console.error('Error submitting form:', error);

@@ -455,7 +455,7 @@ const BondingForm = () => {
   
       // Log the form data for debugging
       console.log('Form Data:', formDataWithUserId);
-      console.log('Email:', formDataWithUserId.Email); // Log the Email specifically
+      console.log('Email:', formDataWithUserId.Email); 
   
       try {
         const response = await axios.post('https://groub-6-backend.onrender.com/submit-form', formDataWithUserId);

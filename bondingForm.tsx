@@ -334,6 +334,11 @@ const BondingForm = () => {
               <Picker.Item label="Zomba" value="Zomba"/>
               <Picker.Item label="Ntcheu" value="Ntcheu" />
               <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Mulanje" value="Mulanje"/>
+              <Picker.Item label="Salima" value="Salima"/>
+              <Picker.Item label="Mphalombe" value="Mphalombe"/>
+              <Picker.Item label="Balaka" value="Balaka"/>
+              <Picker.Item label="Chiradzulo" value="Chiradzulo"/>
             </Picker>  
 
          </View>     

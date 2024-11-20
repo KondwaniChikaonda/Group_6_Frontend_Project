@@ -175,13 +175,34 @@ const BondingForm = () => {
                 style={tw`h-10 border border-gray-300 rounded p-2 mb-4`}
               >
                 <Picker.Item label="Select District" value="" />
-                <Picker.Item label="Blantyre" value="Blantyre" />
-                <Picker.Item label="Thyolo" value="Thyolo" />
-                <Picker.Item label="Mzimba" value="Mzimba" />
-                <Picker.Item label="Lilongwe" value="Lilongwe" />
-                <Picker.Item label="Zomba" value="Zomba" />
-                <Picker.Item label="Ntcheu" value="Ntcheu" />
-                <Picker.Item label="Dedza" value="Dedza" />
+              <Picker.Item label="Blantyre" value="Blantyre" />
+              <Picker.Item label="Thyolo" value="Thyolo" />
+              <Picker.Item label="Mzimba" value="Mzimba" />
+              <Picker.Item label="Lilongwe" value="Lilongwe" />
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Mzuzu" value="Mzuzu"/>
+              <Picker.Item label="Zomba" value="Zomba"/>
+              <Picker.Item label="Ntcheu" value="Ntcheu" />
+              <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Karonga" value="Karonga"/>
+              <Picker.Item label="Chitipa" value="Chitipa"/>
+              <Picker.Item label="Rumphi" value="Rumphi"/>
+              <Picker.Item label="Mphalombe" value="Mphalombe"/>
+              <Picker.Item label="Mwanza" value="Mwanza"/>
+              <Picker.Item label="Mulanje" value="Mulanje"/>
+              <Picker.Item label="Chirazulo" value="Chirazulo"/>
+              <Picker.Item label="Mneno" value="Mneno"/>
+              <Picker.Item label="Likoma" value="Likoma"/>
+              <Picker.Item label="Machinga" value="Machinga"/>
+              <Picker.Item label="Dowa" value="Dowa"/>
+              <Picker.Item label="Kasungu" value="Kasungu"/>
+              <Picker.Item label="Mchinji" value="Mchinji"/>
+              <Picker.Item label="Nkhotakota" value="Nkhotakota"/>
+              <Picker.Item label="Ntchisi" value="Ntchisi"/>
+              <Picker.Item label="Nkhata Bay" value="Nkhata Bay"/>
+              <Picker.Item label="Rumphi" value="Rumphi"/>
+              <Picker.Item label="Balaka" value="Balaka"/>
+              <Picker.Item label="Nsanje" value="Nsanje"/>
               </Picker>
             </View>
           </View>
@@ -254,8 +275,6 @@ const BondingForm = () => {
       ),
     },
     
-
-  
 
 
 
@@ -416,6 +435,10 @@ const BondingForm = () => {
               <Picker.Item label="Malawi University Of Science and Technology" value="Malawi University Of Science and Technology" />
               <Picker.Item label="Mzuzu University" value="Mzuzu University" />
               <Picker.Item label="Catholic University " value ="Catholic University"/>
+              <Picker.Item label="Domasi Colledge of Education" value ="Domasi Colledge of Education"/>
+              <Picker.Item label="Nalikule Colledge of Education" value ="Nalikule Colledge of Education"/>
+              <Picker.Item label="Kamudzu University Health Sciences" value ="Kamudzu University Health Sciences "/>
+              
             </Picker>
         
             <Text style={tw`text-sm`}>Program Of Study</Text>

@@ -10,6 +10,7 @@ export default function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [selectedInstitution, setSelectedInstitution] = useState('');
   const [otp, setOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
@@ -73,6 +74,20 @@ export default function Register({ navigation }) {
         {/* Registration Fields */}
         {!isOtpSent && (
           <>
+
+
+          
+<View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
+              <FontAwesome name="id-badge" size={20} color="gray" style={tw`mr-2`} />
+              <TextInput
+                placeholder="Enter Full Name"
+                style={tw`flex-1`}
+                value={fullName}
+                onChangeText={setRegistrationNumber}
+              />
+            </View>
+
+
             <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
               <FontAwesome name="envelope" size={20} color="gray" style={tw`mr-2`} />
               <TextInput

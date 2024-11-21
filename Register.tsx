@@ -2,9 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { Text, TextInput, View, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import * as AuthSession from 'expo-auth-session';
 import axios from 'axios';
 import tw from 'twrnc';
+
+// Google OAuth Constants
+const CLIENT_ID = '565825441814-874q2gs0ai134ob16o67puqfpshlvq05.apps.googleusercontent.com'; // Replace with your Google API client ID
+const REDIRECT_URI = AuthSession.makeRedirectUri({ useProxy: true });
 
 export default function Register({ navigation }) {
   const [email, setEmail] = useState('');
@@ -14,18 +19,104 @@ export default function Register({ navigation }) {
   const [otp, setOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);  // Added state to store the access token
 
+  // Google OAuth authentication request
+  const [request, response, promptAsync] = AuthSession.useAuthRequest(
+    {
+      clientId: CLIENT_ID,
+      redirectUri: REDIRECT_URI,
+      scopes: ['https://www.googleapis.com/auth/classroom.rosters.readonly'],
+      responseType: 'token',
+    }
+  );
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const { access_token } = response.params;
+      setAccessToken(access_token);  // Store the access token in the state
+      console.log('Authentication succeeded:', access_token);
+    }
+  }, [response]);
+
+  // Trigger Google OAuth
+  const authenticateWithGoogle = async () => {
+    try {
+      await promptAsync();
+    } catch (error) {
+      console.error("Authentication error:", error);
+      Alert.alert("Authentication Error", "Please try again later.");
+    }
+  };
+
+  // Fetch students from Google Classroom
+  const fetchStudents = async (classroomId, token) => {
+    try {
+      const response = await axios.get(
+        `https://classroom.googleapis.com/v1/courses/${classroomId}/students`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      const students = response.data.students.map((student) => ({
+        name: student.profile.name.fullName,
+        registrationNumber: student.profile.emailAddress.split('@')[0], // Assuming registration number is part of the email
+      }));
+
+      return students;
+    } catch (error) {
+      console.error("Error fetching students:", error);
+      throw error;
+    }
+  };
+
+  // Validate Registration Number with Google Classroom
+  const validateRegistrationNumber = async () => {
+    try {
+      if (!accessToken) {
+        Alert.alert("Authentication Error", "You must authenticate with Google first.");
+        return false;
+      }
+      
+      const classroomId = 'uxvktpd'; // Replace with your Classroom ID
+      const students = await fetchStudents(classroomId, accessToken);
+
+      const isValid = students.some(
+        (student) => student.registrationNumber === registrationNumber
+      );
+
+      return isValid;
+    } catch (error) {
+      console.error("Validation error:", error);
+      throw error;
+    }
+  };
+
+  // Handle Registration
   const handleRegister = async () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-      console.log(email);
-      console.log(registrationNumber);
-      console.log(password);
-      console.log(selectedInstitution);
+    if (!email || !registrationNumber || !password || !selectedInstitution) {
+      Alert.alert("Invalid Input", "Please fill out all fields.");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
-      const response = await axios.post('https://groub-6-backend.onrender.com/send-otp', {
+      // Validate the registration number with Google Classroom
+      const isValid = await validateRegistrationNumber();
+
+      if (!isValid) {
+        Alert.alert(
+          "Invalid Registration Number",
+          "Your registration number does not match our records."
+        );
+        setIsSubmitting(false);
+        return;
+      }
+
+      // If validation succeeds, send OTP
+      const response = await axios.post('http://localhost:3000/send-otp', {
         email,
         registrationNumber,
         password,
@@ -33,17 +124,17 @@ export default function Register({ navigation }) {
 
       if (response.status === 200) {
         Alert.alert("OTP Sent", "Please check your email for the OTP.");
-        setIsOtpSent(true);  // Show OTP input field
+        setIsOtpSent(true);
       }
     } catch (error) {
-      Alert.alert("Registration Failed", "Please check your details and try again.");
       console.error("Registration error:", error);
-    }
-    finally {
+      Alert.alert("Registration Failed", "An error occurred. Please try again.");
+    } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Handle OTP Verification
   const handleVerifyOtp = async () => {
     try {
       const response = await axios.post('https://groub-6-backend.onrender.com/verify-otp', {
@@ -60,8 +151,8 @@ export default function Register({ navigation }) {
         Alert.alert("Verification Failed", "Invalid OTP. Please try again.");
       }
     } catch (error) {
-      Alert.alert("Verification Error", "An error occurred. Please try again.");
       console.error("OTP Verification error:", error);
+      Alert.alert("Verification Error", "An error occurred. Please try again.");
     }
   };
 
@@ -105,23 +196,25 @@ export default function Register({ navigation }) {
             </View>
 
             <View style={tw`flex-row items-center w-full p-3 mb-6 border border-gray-300 rounded`}>
-  <FontAwesome name="university" size={20} color="gray" style={tw`mr-2`} />
-  
-  {/* Make sure the Picker takes the remaining space in the flex container */}
-  <Picker
-    selectedValue={selectedInstitution}
-    style={tw`w-full h-5`}  // Set width to 100% and a fixed height
-    onValueChange={(itemValue) => setSelectedInstitution(itemValue)}
-  >
-    <Picker.Item label="Select Institution" value="" />
-    <Picker.Item label="University of Malawi" value="institutionA" />
-    <Picker.Item label="Malawi University of Business and Applied Science" value="institutionB" />
-    <Picker.Item label="Malawi University of Science and Technology" value="institutionC" />
-  </Picker>
-</View>
+              <FontAwesome name="university" size={20} color="gray" style={tw`mr-2`} />
+              <Picker
+                selectedValue={selectedInstitution}
+                style={tw`w-full h-5`}
+                onValueChange={(itemValue) => setSelectedInstitution(itemValue)}
+              >
+                <Picker.Item label="Select Institution" value="" />
+                <Picker.Item label="University of Malawi" value="institutionA" />
+                <Picker.Item label="Malawi University of Business and Applied Science" value="institutionB" />
+                <Picker.Item label="Malawi University of Science and Technology" value="institutionC" />
+              </Picker>
+            </View>
 
-            <TouchableOpacity  onPress={handleRegister} disabled={isSubmitting} style={tw`w-full bg-yellow-600 p-3 rounded`}>
-            <Text   style={tw`text-white text-center`}>{isSubmitting ? 'Processing...' : 'Register'}</Text>
+            <TouchableOpacity
+              onPress={handleRegister}
+              disabled={isSubmitting}
+              style={tw`w-full bg-yellow-600 p-3 rounded`}
+            >
+              <Text style={tw`text-white text-center`}>{isSubmitting ? 'Processing...' : 'Register'}</Text>
             </TouchableOpacity>
           </>
         )}
@@ -141,14 +234,25 @@ export default function Register({ navigation }) {
               />
             </View>
 
-            <TouchableOpacity  onPress={handleVerifyOtp} style={tw`w-full bg-yellow-600 p-3 rounded`}>
+            <TouchableOpacity
+              onPress={handleVerifyOtp}
+              style={tw`w-full bg-yellow-600 p-3 rounded`}
+            >
               <Text style={tw`text-white text-center`}>Verify OTP</Text>
             </TouchableOpacity>
           </>
         )}
-      </View>
 
-      <StatusBar style="auto" />
+        {/* Google Authentication */}
+        <TouchableOpacity
+          onPress={authenticateWithGoogle}
+          style={tw`mt-6 bg-blue-600 p-3 rounded`}
+        >
+          <Text style={tw`text-white text-center`}>Sign Up with Google</Text>
+        </TouchableOpacity>
+
+        <StatusBar style="auto" />
+      </View>
     </View>
   );
 }

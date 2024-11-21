@@ -3,13 +3,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './Login';
-import { resetCache } from './metro.config';
+
 import Reset from './Reset';
 
 import Register from './Register';
 import BondingForm from './bondingForm';
 import Home from './Home';
 import ResetPassword from './ResetPassword';
+
 
 
 const Stack = createStackNavigator();

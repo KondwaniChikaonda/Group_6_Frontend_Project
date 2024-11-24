@@ -341,7 +341,8 @@ const BondingForm = () => {
               <Picker.Item label="Chiradzulo" value="Chiradzulo"/>
             </Picker>  
 
-         </View>     
+         </View>  
+       </View>     
             
 
               
@@ -368,7 +369,7 @@ const BondingForm = () => {
               />
 
           </View>    
-           </View>
+          
        </View>       
           </>      
         ),
@@ -455,7 +456,7 @@ const BondingForm = () => {
   
       // Log the form data for debugging
       console.log('Form Data:', formDataWithUserId);
-      console.log('Email:', formDataWithUserId.Email); // Log the Email specifically
+      console.log('Email:', formDataWithUserId.Email); 
   
       try {
         const response = await axios.post('http://localhost:3000/submit-form', formDataWithUserId);

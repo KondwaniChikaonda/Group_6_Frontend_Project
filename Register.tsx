@@ -11,6 +11,7 @@ export default function Register({ navigation }) {
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [password, setPassword] = useState('');
   const [selectedInstitution, setSelectedInstitution] = useState('');
+  const [fullname, setFullname] = useState('');
   const [otp, setOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,9 +24,10 @@ export default function Register({ navigation }) {
       console.log(registrationNumber);
       console.log(password);
       console.log(selectedInstitution);
+      console.log(fullname);
 
     try {
-      const response = await axios.post('https://groub-6-backend.onrender.com/send-otp', {
+      const response = await axios.post('http://localhost:3000/send-otp', {
         email,
         registrationNumber,
         password,
@@ -46,11 +48,12 @@ export default function Register({ navigation }) {
 
   const handleVerifyOtp = async () => {
     try {
-      const response = await axios.post('https://groub-6-backend.onrender.com/verify-otp', {
+      const response = await axios.post('http://localhost:3000/verify-otp', {
         email,
         otp,
         password,
         registrationNumber,
+        fullname
       });
 
       if (response.status === 200) {
@@ -73,6 +76,17 @@ export default function Register({ navigation }) {
         {/* Registration Fields */}
         {!isOtpSent && (
           <>
+            
+            <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
+              <FontAwesome name="id-badge" size={20} color="gray" style={tw`mr-2`} />
+              <TextInput
+                placeholder="Full Name"
+                style={tw`flex-1`}
+                value={fullname}
+                onChangeText={setFullname}
+              />
+            </View>
+      
             <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
               <FontAwesome name="envelope" size={20} color="gray" style={tw`mr-2`} />
               <TextInput

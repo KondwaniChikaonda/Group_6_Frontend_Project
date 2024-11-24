@@ -83,6 +83,7 @@ export default function Login({ navigation }) {
 
   return (
     <View style={tw`flex-1 bg-white items-center justify-center`}>
+      
            <Text style={tw`text-black text-sm mb-6 `}>Automated Bonding System</Text>
       <View style={tw`w-4/5 max-w-sm p-6 bg-white border border-yellow-500 rounded-lg shadow-lg items-center`}>
         <Text style={tw`text-black text-sm mb-6 `}>Sign in to start your session</Text>

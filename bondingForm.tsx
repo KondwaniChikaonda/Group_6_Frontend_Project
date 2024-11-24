@@ -341,7 +341,8 @@ const BondingForm = () => {
               <Picker.Item label="Chiradzulo" value="Chiradzulo"/>
             </Picker>  
 
-         </View>     
+         </View>  
+       </View>     
             
 
               
@@ -368,7 +369,7 @@ const BondingForm = () => {
               />
 
           </View>    
-           </View>
+          
        </View>       
           </>      
         ),

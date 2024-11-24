@@ -75,13 +75,6 @@ const BondingForm = () => {
 
 
 
-
-
-
-
-
-
-
   const steps = [
     {
       title: "Step 1: Student's Personal Details",
@@ -341,9 +334,15 @@ const BondingForm = () => {
               <Picker.Item label="Zomba" value="Zomba"/>
               <Picker.Item label="Ntcheu" value="Ntcheu" />
               <Picker.Item label="Dedza" value="Dedza"/>
+              <Picker.Item label="Mulanje" value="Mulanje"/>
+              <Picker.Item label="Salima" value="Salima"/>
+              <Picker.Item label="Mphalombe" value="Mphalombe"/>
+              <Picker.Item label="Balaka" value="Balaka"/>
+              <Picker.Item label="Chiradzulo" value="Chiradzulo"/>
             </Picker>  
 
-         </View>     
+         </View>  
+       </View>     
             
 
               
@@ -370,7 +369,7 @@ const BondingForm = () => {
               />
 
           </View>    
-           </View>
+          
        </View>       
           </>      
         ),
@@ -396,8 +395,10 @@ const BondingForm = () => {
               <Picker.Item label="University Of Malawi" value="University Of Malawi" />
               <Picker.Item label="Malawi University Of Business and Applied Science" value="Malawi University Of Business and Applied Science" />
               <Picker.Item label="Malawi University Of Science and Technology" value="Malawi University Of Science and Technology" />
-              <Picker.Item label="Mzuzu University" value="Mzuzu University" />
+              <Picker.Item label="Mzuzu University" value="Mzuzu University"/>
               <Picker.Item label="Catholic University " value ="Catholic University"/>
+              <Picker.Item label="Domasi Colledge Of Education" value ="Domasi Colledge Of Education"/>
+              <Picker.Item label="Nalikule Colldge of Education" value ="Nalikule Colldge of Education"/>
             </Picker>
         
             <Text style={tw`text-sm`}>Program Of Study</Text>
@@ -458,7 +459,7 @@ const BondingForm = () => {
       console.log('Email:', formDataWithUserId.Email); 
   
       try {
-        const response = await axios.post('https://groub-6-backend.onrender.com/submit-form', formDataWithUserId);
+        const response = await axios.post('http://localhost:3000/submit-form', formDataWithUserId);
         alert(response.data.message); // Show the success message
       } catch (error) {
         console.error('Error submitting form:', error);

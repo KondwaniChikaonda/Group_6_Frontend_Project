@@ -22,7 +22,7 @@ export default function App() {
       <Stack.Screen name="/" component={Login} />
       <Stack.Screen name="Reset" component={Reset} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="bond" component={BondingForm} />
+      <Stack.Screen name="Bonding" component={BondingForm} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />      
       </Stack.Navigator>

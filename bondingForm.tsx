@@ -47,7 +47,7 @@ const BondingForm = ({ navigation }) => {
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
 
 
@@ -630,6 +630,12 @@ const BondingForm = ({ navigation }) => {
   ];
 
   const submitForm = async () => {
+
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+
     if (userId) {
       console.log('User ID:', userId);
       
@@ -650,6 +656,9 @@ const BondingForm = ({ navigation }) => {
       } catch (error) {
         console.error('Error submitting form:', error);
         alert('There was an error submitting the form');
+      }
+      finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -682,8 +691,15 @@ const BondingForm = ({ navigation }) => {
         <TouchableOpacity onPress={previousStep} style={tw`bg-gray-300 px-4 py-2 rounded`}>
           <Text>Back</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={nextStep} style={tw`bg-yellow-600 px-4 py-2 rounded`}>
-          <Text style={tw`text-white`}>{currentStep === steps.length - 1 ? 'Submit' : 'Next'}</Text>
+        <TouchableOpacity disabled={isSubmitting} onPress={nextStep} style={tw`bg-yellow-600 px-4 py-2 rounded`}>
+        <Text style={tw`text-white`}>
+  {isSubmitting
+    ? 'Submitting'
+    : currentStep === steps.length - 1
+    ? 'Submit'
+    : 'Next'}
+</Text>
+
         </TouchableOpacity>
       </View>
     </View>

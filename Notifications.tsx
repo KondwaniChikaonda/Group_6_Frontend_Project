@@ -16,7 +16,6 @@ const Home = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [formFilled, setFormFilled] = useState(null);
   const [notifications, setNotifications] = useState([]);
-  const [showNotifications, setShowNotifications] = useState(false);
 
 
   const fetchNotifications = async () => {
@@ -35,7 +34,6 @@ const Home = ({ navigation }) => {
     try {
       const response = await axios.get(`http://localhost:3000/api/user/${userId}`);
       setUserData(response.data);
-      fetchNotifications();
     } catch (error) {
       console.error('Error fetching user data:', error);
     } finally {
@@ -68,7 +66,6 @@ const Home = ({ navigation }) => {
 
     if (detailsVisible) {
       fetchUserData();
-      fetchNotifications();
     }
 
 
@@ -77,7 +74,7 @@ const Home = ({ navigation }) => {
         const id = await AsyncStorage.getItem('userId');
         const registrationNumber = await AsyncStorage.getItem('registrationNumber');
         const fullName = await AsyncStorage.getItem('fullName');
-        fetchNotifications();
+
         setUserId(id);
         setRegistrationNumber(registrationNumber);
         setFullName(fullName);
@@ -94,14 +91,6 @@ const Home = ({ navigation }) => {
     navigation.navigate('Login'); // Navigate back to the login screen
   };
 
-
-  const handleNotificationPress = async () => {
-    setShowNotifications(!showNotifications);
-    if (!showNotifications) {
-      await fetchNotifications();
-    }
-  };
-
   return (
     <ImageBackground
       style={tw`flex-1 bg-white bg-cover`}
@@ -109,37 +98,16 @@ const Home = ({ navigation }) => {
       {/* Menu Bar */}
 
       <View style={tw`absolute top-5 right-5 z-50`}>
-      <TouchableOpacity onPress={handleNotificationPress} style={tw`relative`}>
-          <MaterialIcons name="notifications" size={28} color="black" />
-          {notifications.length > 0 && (
-            <View
-              style={tw`absolute -top-2 -right-2 bg-red-500 rounded-full h-5 w-5 items-center justify-center`}
-            >
-              <Text style={tw`text-white text-xs font-bold`}>{notifications.length}</Text>
-            </View>
-          )}
-        </TouchableOpacity>
-
-
-  {showNotifications && (
-          <View style={tw`absolute top-10 right-0 bg-white border border-gray-200 rounded-lg shadow-lg w-64 max-h-96`}>
-            {notifications.length > 0 ? (
-              
-              <View>
-              {notifications.map((notif, index) => (
-                <Text key={index} style={tw`text-black p-2`}>
-                  {notif.message}
-                </Text>
-              ))}
-            </View>      
-      
-            ) : (
-              <View style={tw`p-3`}>
-                <Text style={tw`text-gray-500 text-sm`}>No notifications</Text>
-              </View>
-            )}
-          </View>
-        )}
+  <TouchableOpacity onPress={fetchNotifications} style={tw`relative`}>
+    <MaterialIcons name="notifications" size={28} color="black" />
+    {notifications.length > 0 && (
+      <View
+        style={tw`absolute -top-2 -right-2 bg-red-500 rounded-full h-5 w-5 items-center justify-center`}
+      >
+        <Text style={tw`text-white text-xs font-bold`}>{notifications.length}</Text>
+      </View>
+    )}
+  </TouchableOpacity>
 </View>
 
 
@@ -233,31 +201,10 @@ const Home = ({ navigation }) => {
         </View>
       )}
 
-      {/* Centered Image */}
-      <View style={tw`items-center justify-center mt-12`}>
-        <Image
-          source={require('./assets/logo.png')}
-          style={tw`w-30 h-30 mb-2`}
-          resizeMode="contain"
-        />
-      </View>
-      <View style={tw`items-center justify-center mb-20`}>
+   
+    
 
 
-<Image
-    source={require('./assets/pic.jpg')} // Background image
-    style={tw`w-100 h-100 mb-2`} // Width and height for the image
-    resizeMode="contain" // Ensure the image maintains aspect ratio
-  />
-
-</View>
-
-      {/* Footer */}
-      <View style={tw`absolute bottom-5 w-full items-center`}>
-        <Text style={tw`font-bold text-black text-sm text-center`}>All rights reserved</Text>
-        <Text style={tw`font-bold text-black text-sm`}>Loans Board Malawi</Text>
-        <Text style={tw`font-bold text-black text-sm`}>Reserved by all rights</Text>
-      </View>
     </ImageBackground>
   );
 };

@@ -10,6 +10,7 @@ export default function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [selectedInstitution, setSelectedInstitution] = useState('');
   const [fullname, setFullname] = useState('');
   const [otp, setOtp] = useState('');
@@ -47,6 +48,12 @@ export default function Register({ navigation }) {
   };
 
   const handleVerifyOtp = async () => {
+
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+
     try {
       const response = await axios.post('http://localhost:3000/verify-otp', {
         email,
@@ -66,6 +73,9 @@ export default function Register({ navigation }) {
       Alert.alert("Verification Error", "An error occurred. Please try again.");
       console.error("OTP Verification error:", error);
     }
+    finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -76,6 +86,7 @@ export default function Register({ navigation }) {
         {/* Registration Fields */}
         {!isOtpSent && (
           <>
+
             
             <View style={tw`flex-row items-center w-full p-3 mb-4 border border-gray-300 rounded`}>
               <FontAwesome name="id-badge" size={20} color="gray" style={tw`mr-2`} />
@@ -155,8 +166,8 @@ export default function Register({ navigation }) {
               />
             </View>
 
-            <TouchableOpacity  onPress={handleVerifyOtp} style={tw`w-full bg-yellow-600 p-3 rounded`}>
-              <Text style={tw`text-white text-center`}>Verify OTP</Text>
+            <TouchableOpacity  onPress={handleVerifyOtp}  disabled={isSubmitting} style={tw`w-full bg-yellow-600 p-3 rounded`}>
+            <Text   style={tw`text-white text-center`}>{isSubmitting ? 'Processing...' : 'Verify'}</Text>
             </TouchableOpacity>
           </>
         )}

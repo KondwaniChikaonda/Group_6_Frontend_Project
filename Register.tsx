@@ -48,6 +48,12 @@ export default function Register({ navigation }) {
   };
 
   const handleVerifyOtp = async () => {
+
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+
     try {
       const response = await axios.post('http://localhost:3000/verify-otp', {
         email,
@@ -66,6 +72,9 @@ export default function Register({ navigation }) {
     } catch (error) {
       Alert.alert("Verification Error", "An error occurred. Please try again.");
       console.error("OTP Verification error:", error);
+    }
+    finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -157,8 +166,8 @@ export default function Register({ navigation }) {
               />
             </View>
 
-            <TouchableOpacity  onPress={handleVerifyOtp} style={tw`w-full bg-yellow-600 p-3 rounded`}>
-              <Text style={tw`text-white text-center`}>Verify OTP</Text>
+            <TouchableOpacity  onPress={handleVerifyOtp}  disabled={isSubmitting} style={tw`w-full bg-yellow-600 p-3 rounded`}>
+            <Text   style={tw`text-white text-center`}>{isSubmitting ? 'Processing...' : 'Verify'}</Text>
             </TouchableOpacity>
           </>
         )}

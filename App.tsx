@@ -10,7 +10,7 @@ import Register from './Register';
 import BondingForm from './bondingForm';
 import Home from './Home';
 import ResetPassword from './ResetPassword';
-import PersonalDetails from './PersonalDetails';
+
 
 
 
@@ -25,8 +25,7 @@ export default function App() {
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Bonding" component={BondingForm} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="ResetPassword" component={ResetPassword} />   
-      <Stack.Screen name="PersonalDetails" component={PersonalDetails} />   
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );

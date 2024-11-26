@@ -91,7 +91,7 @@ const Home = ({ navigation }) => {
 
   const handleSignOut = async () => {
     await AsyncStorage.clear(); // Clear stored user data
-    navigation.navigate('Login'); // Navigate back to the login screen
+    navigation.navigate('Login'); // Navigate back to the login screenn
   };
 
 

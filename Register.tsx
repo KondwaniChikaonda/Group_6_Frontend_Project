@@ -18,6 +18,19 @@ export default function Register({ navigation }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleRegister = async () => {
+
+
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.ac\.mw$/;
+
+  if (!emailRegex.test(email)) {
+    Alert.alert("Invalid Email", "Please enter a valid school email address.");
+    setIsSubmitting(false);
+    return;
+  }
+
+
+
     if (isSubmitting) return;
     setIsSubmitting(true);
 

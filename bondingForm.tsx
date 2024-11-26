@@ -90,17 +90,27 @@ const BondingForm = ({ navigation }) => {
 
 
 
-
    if (formFilled) {
     // Show message if the form is already submitted
     return (
-      <View style={tw`flex-1 items-center justify-center`}>
-        <Text style={tw`text-lg text-green-600`}>
-          You have already bonded!.
-        </Text>
+      <View style={tw`flex-1 bg-gray-100 items-center justify-center`}>
+        <View style={tw`w-4/5 p-6 bg-white border border-green-500 rounded-lg shadow-lg items-center`}>
+          {/* Success Icon */}
+          <FontAwesome name="check-circle" size={60} color="green" style={tw`mb-4`} />
+          {/* Success Message */}
+          <Text style={tw`text-lg text-green-600 font-bold text-center`}>
+            You have already bonded!
+          </Text>
+          {/* Additional Info */}
+          <Text style={tw`text-sm text-gray-600 text-center mt-3`}>
+            You can now proceed with other tasks or check your email for further updates.
+          </Text>
+        </View>
       </View>
     );
   }
+
+
 
 
 

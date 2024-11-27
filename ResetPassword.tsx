@@ -30,7 +30,7 @@ export default function ResetPassword() {
 
     try {
       
-      const response = await axios.post('https://mybackend-new.onrender.com/reset-password', {
+      const response = await axios.post('http://localhost:3000/reset-password', {
         token,
         newPassword,
       });

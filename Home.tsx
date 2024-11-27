@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get(`https://mybackend-new.onrender.com/api/notifications/${userId}`);
+      const response = await axios.get(`http://localhost:3000/api/notifications/${userId}`);
       setNotifications(response.data.notifications);
     } catch (error) {
       console.error('Error fetching notifications:', error);
@@ -33,7 +33,7 @@ const Home = ({ navigation }) => {
   const fetchUserData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://mybackend-new.onrender.com/api/user/${userId}`);
+      const response = await axios.get(`http://localhost:3000/api/user/${userId}`);
       setUserData(response.data);
       fetchNotifications();
     } catch (error) {
@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
 
     const checkFormStatus = async () => {
       try {
-        const response = await axios.get(`https://mybackend-new.onrender.com/check-form-status/${userId}`);
+        const response = await axios.get(`http://localhost:3000/check-form-status/${userId}`);
         setFormFilled(response.data.formFilled);
       } catch (error) {
         console.error('Error fetching form status:', error);

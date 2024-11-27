@@ -82,7 +82,9 @@ const BondingForm = ({ navigation }) => {
 
     const checkFormStatus = async () => {
       try {
+
         const response = await axios.get(`https://groub-6-backend-2.onrender.com/check-form-status/${userId}`);
+
         setFormFilled(response.data.formFilled);
       } catch (error) {
         console.error('Error fetching form status:', error);
@@ -781,7 +783,9 @@ const BondingForm = ({ navigation }) => {
       console.log("The image is ", imageData);
   
       try {
+
         const response = await axios.post("https://groub-6-backend-2.onrender.com/submit-form", {
+
           ...formDataWithUserId,
           image: data, 
         });

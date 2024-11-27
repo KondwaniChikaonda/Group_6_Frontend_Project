@@ -81,7 +81,9 @@ export default function Register({ navigation }) {
     console.log(fullname);
 
     try {
+
       const response = await axios.post('https://groub-6-backend-2.onrender.com/send-otp', {
+
         email,
         registrationNumber,
         password,
@@ -104,7 +106,9 @@ export default function Register({ navigation }) {
     setIsSubmitting(true);
 
     try {
+
       const response = await axios.post('https://groub-6-backend-2.onrender.com/verify-otp', {
+
         email,
         otp,
         password,
@@ -223,6 +227,11 @@ export default function Register({ navigation }) {
             </TouchableOpacity>
           </>
         )}
+
+<Text style={tw`mt-3 text-center`}>
+          Already have an account? <Text onPress={() => navigation.navigate('Login')} style={tw`text-yellow-500`}>Login</Text>
+        </Text>
+
         {message ? <Text style={tw`text-red-500 mt-4`}>{message}</Text> : null}
       </View>
       

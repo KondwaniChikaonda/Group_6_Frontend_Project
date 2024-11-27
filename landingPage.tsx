@@ -10,7 +10,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import Background from "./Background";
 
 const LandingPage: React.FC<{ navigation?: any }> = ({ navigation }) => {
-  const [welcomeMessage, setWelcomeMessage] = useState("Welcome to Our App!");
+  const [welcomeMessage, setWelcomeMessage] = useState("Welcome to loan bonding app!");
 
   useEffect(() => {
     const fetchMessage = async () => {

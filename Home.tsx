@@ -190,54 +190,83 @@ const Home = ({ navigation }) => {
 
       
      
-      
       {detailsVisible && (
-        <View style={tw`absolute top-0 left-0 h-full bg-white shadow-lg w-80 p-5 z-50`}>
-          <TouchableOpacity onPress={() => setDetailsVisible(false)}>
-            <FontAwesome name="close" size={24} color="black" style={tw`self-end mb-4`} />
-          </TouchableOpacity>
-          <Text style={tw`text-center text-xl font-bold mb-6 text-yellow-600`}>
-            Personal Details
-          </Text>
-          {loading ? (
-            <ActivityIndicator size="large" color="blue" />
-          ) : (
-            <>
-              <View style={tw`mb-4`}>
-                <Text style={tw`text-gray-600 text-base`}>Full Name:</Text>
-                <Text style={tw`text-black text-lg font-medium`}>
-                  {userData?.fullname || 'Not Available'}
-                </Text>
-              </View>
-              <View style={tw`mb-4`}>
-                <Text style={tw`text-gray-600 text-base`}>Email:</Text>
-                <Text style={tw`text-black text-lg font-medium`}>
-                  {userData?.email || 'Not Available'}
-                </Text>
-              </View>
-              <View style={tw`mb-4`}>
-                <Text style={tw`text-gray-600 text-base`}>Registration Number:</Text>
-                <Text style={tw`text-black text-lg font-medium`}>
-                  {userData?.registration_number || 'Not Available'}
-                </Text>
-              </View>
-              <View style={tw`mb-4`}>
-                <Text style={tw`text-gray-600 text-base`}>Institution:</Text>
-                <Text style={tw`text-black text-lg font-medium`}>
-                  {userData?.institution || 'Not Available'}
-                </Text>
-              </View>
-              <View>
-                <Text style={tw`text-gray-600 text-base`}>Bonding Status:</Text>
-                <Text style={tw`text-black text-lg font-medium`}>
-                {formFilled ? 'Bonded' : 'Not bonded'}
+  <View style={tw`absolute top-0 left-0 h-full bg-white shadow-lg w-80 p-5 z-50`}>
+    {/* Close Button */}
+    <TouchableOpacity onPress={() => setDetailsVisible(false)}>
+      <FontAwesome name="close" size={24} color="black" style={tw`self-end mb-4`} />
+    </TouchableOpacity>
 
-                </Text>
-              </View>
-            </>
-          )}
+    {/* Header */}
+    <Text style={tw`text-center text-2xl font-bold mb-6 text-yellow-600`}>
+      <FontAwesome name="id-card" size={24} color="gold" style={tw`mr-2`} />
+      Personal Details
+    </Text>
+
+    {/* Loading Indicator */}
+    {loading ? (
+      <ActivityIndicator size="large" color="blue" />
+    ) : (
+      <>
+        {/* Full Name */}
+        <View style={tw`mb-4 flex-row items-center`}>
+          <FontAwesome name="user" size={20} color="gray" style={tw`mr-3`} />
+          <View>
+            <Text style={tw`text-gray-600 text-base`}>Full Name:</Text>
+            <Text style={tw`text-black text-lg font-medium`}>
+              {userData?.fullname || 'Not Available'}
+            </Text>
+          </View>
         </View>
-      )}
+
+        {/* Email */}
+        <View style={tw`mb-4 flex-row items-center`}>
+          <MaterialIcons name="email" size={20} color="gray" style={tw`mr-3`} />
+          <View>
+            <Text style={tw`text-gray-600 text-base`}>Email:</Text>
+            <Text style={tw`text-black text-lg font-medium`}>
+              {userData?.email || 'Not Available'}
+            </Text>
+          </View>
+        </View>
+
+        {/* Registration Number */}
+        <View style={tw`mb-4 flex-row items-center`}>
+          <FontAwesome name="hashtag" size={20} color="gray" style={tw`mr-3`} />
+          <View>
+            <Text style={tw`text-gray-600 text-base`}>Registration Number:</Text>
+            <Text style={tw`text-black text-lg font-medium`}>
+              {userData?.registration_number || 'Not Available'}
+            </Text>
+          </View>
+        </View>
+
+        {/* Institution */}
+        <View style={tw`mb-4 flex-row items-center`}>
+          <FontAwesome name="university" size={20} color="gray" style={tw`mr-3`} />
+          <View>
+            <Text style={tw`text-gray-600 text-base`}>Institution:</Text>
+            <Text style={tw`text-black text-lg font-medium`}>
+              {userData?.institution || 'Not Available'}
+            </Text>
+          </View>
+        </View>
+
+        {/* Bonding Status */}
+        <View style={tw`flex-row items-center`}>
+          <FontAwesome name="check-circle" size={20} color={formFilled ? 'green' : 'red'} style={tw`mr-3 mt-2`} />
+          <View>
+            <Text style={tw`text-gray-600 text-base`}>Bonding Status:</Text>
+            <Text style={tw`text-black text-lg font-medium`}>
+              {formFilled ? 'Bonded' : 'Not Bonded'}
+            </Text>
+          </View>
+        </View>
+      </>
+    )}
+  </View>
+)}
+
 
       {/* Centered Image */}
       <View style={tw`items-center justify-center mt-12`}>
@@ -249,25 +278,42 @@ const Home = ({ navigation }) => {
       </View>
 
       
-      <View style={tw`items-center justify-center mb-20`}>
+{/* Welcome Section */}
+<View style={tw`items-center justify-center mb-16`}>
+  {/* Card-Like Welcome Section */}
+  <View style={tw`w-11/12 bg-white rounded-lg shadow-2xl p-6`}>
+    {/* Title */}
+    <Text style={tw`font-extrabold text-xl text-gray-800 text-center mb-4`}>
+      Welcome to the Loans Bonding System Portal
+    </Text>
 
-        <Text  style={tw`font-semibold text-xl`}  >Welcome to Loans Bonding System Portal! </Text>
+    {/* Divider */}
+    <View style={tw`h-1 w-16 bg-yellow-400 mx-auto mb-4 rounded-full`} />
 
-
-<Image
-    source={require('./assets/pic.jpg')} 
-    style={tw`w-100 h-100 mb-2`} 
-    resizeMode="contain" 
-  />
-
+    {/* Image */}
+    <View style={tw`items-center`}>
+      <Image
+        source={require('./assets/pic.jpg')}
+        style={tw`w-48 h-48 rounded-full border-4 border-yellow-400 shadow-md`}
+        resizeMode="cover"
+      />
+    </View>
+  </View>
 </View>
 
-      {/* Footer */}
-      <View style={tw`absolute bottom-5 w-full items-center`}>
-        <Text style={tw`text-black text-sm text-center`}>All rights reserved</Text>
-        <Text style={tw`text-black text-sm`}>Automated Loans Bonding System</Text>
-        <Text style={tw`text-black text-sm`}>2024</Text>
-      </View>
+
+{/* Footer */}
+<View style={tw`absolute bottom-0 w-full bg-gray-100 py-4`}>
+  <View style={tw`border-t border-gray-300 py-2`}>
+    <Text style={tw`text-gray-600 text-sm text-center`}>
+      © 2024 Automated Loans Bonding System. All rights reserved.
+    </Text>
+    <Text style={tw`text-gray-600 text-sm text-center`}>
+      Crafted for seamless bonding experiences.
+    </Text>
+  </View>
+</View>
+
     </ImageBackground>
   );
 };

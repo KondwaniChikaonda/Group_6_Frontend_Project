@@ -223,6 +223,11 @@ export default function Register({ navigation }) {
             </TouchableOpacity>
           </>
         )}
+
+<Text style={tw`mt-3 text-center`}>
+          Already have an account? <Text onPress={() => navigation.navigate('Login')} style={tw`text-yellow-500`}>Login</Text>
+        </Text>
+
         {message ? <Text style={tw`text-red-500 mt-4`}>{message}</Text> : null}
       </View>
       

@@ -57,7 +57,9 @@ export default function Login({ navigation }) {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('http://localhost:3000/login', {
+
+      const response = await axios.post('https://groub-6-backend-2.onrender.com/login', {
+
         username,
         password,
       });

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, TextInput, Button, Alert } from 'react-native';
 import * as Linking from 'expo-linking';
-import axios from 'axios';  // Import Axios
+import axios from 'axios';  
 
 export default function ResetPassword() {
   const [token, setToken] = useState(null);
@@ -9,13 +9,13 @@ export default function ResetPassword() {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   useEffect(() => {
-    // Capture token from URL parameters
+   
     const getTokenFromUrl = async () => {
       const { queryParams } = Linking.parse(Linking.getInitialURL());
       if (queryParams && queryParams.token) {
         setToken(queryParams.token);
       } else {
-        // Handle error or invalid token case
+       
         Alert.alert('Error', 'Invalid or expired token');
       }
     };
@@ -29,8 +29,8 @@ export default function ResetPassword() {
     }
 
     try {
-      // Make the API call using Axios
-      const response = await axios.post('http://localhost:3000/reset-password', {
+      
+      const response = await axios.post('https://groub-6-backend-2.onrender.com/reset-password', {
         token,
         newPassword,
       });
@@ -41,15 +41,15 @@ export default function ResetPassword() {
         Alert.alert('Error', response.data.message || 'Something went wrong');
       }
     } catch (error) {
-      // Handle error
+      
       if (error.response) {
-        // The server responded with a status code outside the range of 2xx
+        
         Alert.alert('Error', error.response.data.message || 'Something went wrong');
       } else if (error.request) {
-        // The request was made but no response was received
+
         Alert.alert('Error', 'Network error or no response from server');
       } else {
-        // Something else went wrong
+       
         Alert.alert('Error', 'An unexpected error occurred');
       }
     }

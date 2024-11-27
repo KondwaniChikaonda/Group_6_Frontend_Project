@@ -81,7 +81,7 @@ export default function Register({ navigation }) {
     console.log(fullname);
 
     try {
-      const response = await axios.post('https://mybackend-new.onrender.com/send-otp', {
+      const response = await axios.post('https://groub-6-backend-2.onrender.com/send-otp', {
         email,
         registrationNumber,
         password,
@@ -104,7 +104,7 @@ export default function Register({ navigation }) {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('https://mybackend-new.onrender.com/verify-otp', {
+      const response = await axios.post('https://groub-6-backend-2.onrender.com/verify-otp', {
         email,
         otp,
         password,

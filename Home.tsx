@@ -10,8 +10,8 @@ const Home = ({ navigation }) => {
   const [bondingStatus, setbondingStatus] = useState('')
   const [fullName, setFullName] = useState('');
   const [registrationNumber, setRegistrationNumber] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false); // State to toggle menu visibility
-  const [detailsVisible, setDetailsVisible] = useState(false); // State to toggle personal details popup
+  const [menuOpen, setMenuOpen] = useState(false); 
+  const [detailsVisible, setDetailsVisible] = useState(false); 
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [formFilled, setFormFilled] = useState(null);
@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/notifications/${userId}`);
+      const response = await axios.get(`https://mybackend-new.onrender.com/api/notifications/${userId}`);
       setNotifications(response.data.notifications);
     } catch (error) {
       console.error('Error fetching notifications:', error);
@@ -33,7 +33,7 @@ const Home = ({ navigation }) => {
   const fetchUserData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:3000/api/user/${userId}`);
+      const response = await axios.get(`https://mybackend-new.onrender.com/api/user/${userId}`);
       setUserData(response.data);
       fetchNotifications();
     } catch (error) {
@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
 
     const checkFormStatus = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/check-form-status/${userId}`);
+        const response = await axios.get(`https://mybackend-new.onrender.com/check-form-status/${userId}`);
         setFormFilled(response.data.formFilled);
       } catch (error) {
         console.error('Error fetching form status:', error);
@@ -90,8 +90,8 @@ const Home = ({ navigation }) => {
   }, [detailsVisible]);
 
   const handleSignOut = async () => {
-    await AsyncStorage.clear(); // Clear stored user data
-    navigation.navigate('Login'); // Navigate back to the login screenn
+    await AsyncStorage.clear(); 
+    navigation.navigate('Login'); 
   };
 
 
@@ -157,8 +157,8 @@ const Home = ({ navigation }) => {
   <View style={tw`bg-white rounded-lg shadow-lg p-3 mt-2`}>
     <TouchableOpacity
       onPress={() => {
-        setDetailsVisible(true); // Show personal details pop-up
-        setMenuOpen(false); // Close menu
+        setDetailsVisible(true); 
+        setMenuOpen(false);
       }}
       style={tw`flex-row items-center py-2`}
     >
@@ -186,7 +186,7 @@ const Home = ({ navigation }) => {
 
       </View>
 
-      {/* Left Side Pop-Up Frame */}
+   
 
       
      
@@ -221,6 +221,12 @@ const Home = ({ navigation }) => {
                   {userData?.registration_number || 'Not Available'}
                 </Text>
               </View>
+              <View style={tw`mb-4`}>
+                <Text style={tw`text-gray-600 text-base`}>Institution:</Text>
+                <Text style={tw`text-black text-lg font-medium`}>
+                  {userData?.institution || 'Not Available'}
+                </Text>
+              </View>
               <View>
                 <Text style={tw`text-gray-600 text-base`}>Bonding Status:</Text>
                 <Text style={tw`text-black text-lg font-medium`}>
@@ -241,22 +247,26 @@ const Home = ({ navigation }) => {
           resizeMode="contain"
         />
       </View>
+
+      
       <View style={tw`items-center justify-center mb-20`}>
+
+        <Text  style={tw`font-semibold text-xl`}  >Welcome to Loans Bonding System Portal! </Text>
 
 
 <Image
-    source={require('./assets/pic.jpg')} // Background image
-    style={tw`w-100 h-100 mb-2`} // Width and height for the image
-    resizeMode="contain" // Ensure the image maintains aspect ratio
+    source={require('./assets/pic.jpg')} 
+    style={tw`w-100 h-100 mb-2`} 
+    resizeMode="contain" 
   />
 
 </View>
 
       {/* Footer */}
       <View style={tw`absolute bottom-5 w-full items-center`}>
-        <Text style={tw`font-bold text-black text-sm text-center`}>All rights reserved</Text>
-        <Text style={tw`font-bold text-black text-sm`}>Loans Board Malawi</Text>
-        <Text style={tw`font-bold text-black text-sm`}>Reserved by all rights</Text>
+        <Text style={tw`text-black text-sm text-center`}>All rights reserved</Text>
+        <Text style={tw`text-black text-sm`}>Automated Loans Bonding System</Text>
+        <Text style={tw`text-black text-sm`}>2024</Text>
       </View>
     </ImageBackground>
   );

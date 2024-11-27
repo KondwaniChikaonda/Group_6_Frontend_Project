@@ -19,7 +19,7 @@ export default function Reset() {
 
     try {
       // Replace with your actual backend URL
-      const response = await axios.post('http://localhost:3000/api/users/reset-password-request', {
+      const response = await axios.post('https://mybackend-new.onrender.com/api/users/reset-password-request', {
         email,
       });
 

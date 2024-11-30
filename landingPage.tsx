@@ -67,7 +67,7 @@ const LandingPage: React.FC<{ navigation?: any }> = ({ navigation }) => {
           Empowering Financial Solutions Worldwide
         </Text>
         <Text style={tw`text-gray-500 text-xs`}>
-          © 2024 Automated Loan Bonding System. All Rights Reserved.
+          © 2024 Automated Loans Bonding System. All Rights Reserved.
         </Text>
       </View>
     </View>

@@ -724,6 +724,7 @@ const BondingForm = ({ navigation }) => {
             >
               <Picker.Item label="Select Tuition Amount" value="" />
               <Picker.Item label="MK650,000" value="650000" />
+              <Picker.Item label="MK800,000" value="80000" />
           
         </Picker>
 
@@ -736,6 +737,7 @@ const BondingForm = ({ navigation }) => {
             >
               <Picker.Item label="Select Upkeep Amount" value="" />
               <Picker.Item label="MK560,000" value="560000" />
+              <Picker.Item label="MK700,000" value="700000" />
           
         </Picker>
 

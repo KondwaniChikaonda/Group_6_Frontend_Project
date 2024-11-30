@@ -1,21 +1,33 @@
 import React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { ImageBackground, View, StyleSheet, Image } from "react-native";
 import tw from "twrnc";
 
 interface BackgroundProps {
-  children: React.ReactNode; // To render child components
+  children: React.ReactNode; 
 }
 
 const Background: React.FC<BackgroundProps> = ({ children }) => {
   return (
     <ImageBackground
-      source={require("./assets/pic2.jpg")} // Background image
+      source={require("./assets/pic2.jpg")} 
       style={styles.background}
-      resizeMode="cover" // Ensures the image covers the screen
+      resizeMode="cover" 
     >
-      {/* Dark Overlay */}
+
+      
+    
+      <View style={tw`items-center justify-center mt-20`}>
+        <Image
+          source={require("./assets/logo.png")} 
+          style={styles.logo} 
+          resizeMode="contain"
+        />
+      </View>
+
+  
       <View style={styles.darkOverlay} />
-      {/* Content */}
+      
+
       <View style={styles.contentOverlay}>{children}</View>
     </ImageBackground>
   );
@@ -27,12 +39,17 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  logo: {
+    width: 120, 
+    height: 120, 
+    marginBottom: 20,
+  },
   darkOverlay: {
-    ...StyleSheet.absoluteFillObject, // Covers the entire background
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Black with 50% opacity
+    ...StyleSheet.absoluteFillObject, 
+    backgroundColor: "rgba(0, 0, 0, 0.6)", 
   },
   contentOverlay: {
-    flex: 1, // Ensures children are displayed on top of the overlay
+    flex: 1, 
   },
 });
 

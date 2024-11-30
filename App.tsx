@@ -18,6 +18,7 @@ import Success from './Success';
 
 
 
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -31,7 +32,6 @@ export default function App() {
       <Stack.Screen name="Bonding" component={BondingForm} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} /> 
- 
       <Stack.Screen name="Success" component={Success} />    
         
       </Stack.Navigator>

@@ -287,14 +287,14 @@ const Home = ({ navigation }) => {
       
 {/* Welcome Section */}
 <View style={tw`items-center justify-center mb-16`}>
-  {/* Card-Like Welcome Section */}
+
   <View style={tw`w-11/12 bg-white rounded-lg shadow-2xl p-6`}>
-    {/* Title */}
+
     <Text style={tw`font-extrabold text-xl text-gray-800 text-center mb-4`}>
       Welcome to the Loans Bonding System Portal
     </Text>
 
-    {/* Divider */}
+  
     <View style={tw`h-1 w-16 bg-yellow-400 mx-auto mb-4 rounded-full`} />
 
     {/* Image */}

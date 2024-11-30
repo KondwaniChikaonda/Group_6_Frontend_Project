@@ -1,2 +1,2 @@
 # Group_6_Frontend
-Deployed link: https://automated-bonding-system.netlify.app/
+This is frontend code for group 6
